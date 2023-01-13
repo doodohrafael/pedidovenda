@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+body {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-weight: normal;
+}
+
+header, link, graphicImage { /*header é o utilizado no curso*/
+	padding: 5px 0px;
+	margin-bottom: 20px;
+	height: 40px;
+	
+	background-color: #545454;
+	color: #fff;
+	
+	box-shadow: 0px 2px 2px #ccc;
+}
+
+#tam-logo-header {
+	width: 170px;
+}
+
+
