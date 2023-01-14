@@ -9,9 +9,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="titulo">Sistema de Pedidos de Vendas</ui:insert></title>
 	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
 </h:head>
 
 <h:body>
+	<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoeda()">
+		<f:facet name="start">
+			<p:graphicImage styleClass="ajax-status-largura-img" 
+				library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<p:outputLabel value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
 	<header>
 		<div>
 			<h:link>
@@ -20,18 +31,28 @@
 		</div>
 	</header>
 
+	<div id="conteudo">
+		<ui:insert name="corpo"></ui:insert>
+	</div>
+	
+	<p:separator style="margin-top: 20px;" />
+	
+	<footer>
+		Curso Online de Sistemas Comerciais Java EE com CDI, JPA e Primefaces.
+		<a href="https://www.algaworks.com/" target="_blank">www.algaworks.com</a>
+	</footer>
+	
+	<script>
+		function configurarMoeda() {
+			$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+		}
+		
+		$(document).ready(function() {
+			configurarMoeda();
+		})
+	</script>
 </h:body>
 
-<div id="conteudo">
-	<ui:insert name="corpo"></ui:insert>
-</div>
-
-<p:separator style="margin-top: 20px;" />
-
-<footer>
-	Curso Online de Sistemas Comerciais Java EE com CDI, JPA e Primefaces.
-	<a href="https://www.algaworks.com/" target="_blank">www.algaworks.com</a>
-</footer>
 </html>
 
 

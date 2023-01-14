@@ -26,11 +26,24 @@
 
 			<p:outputLabel value="Nome" for="nome" />
 			<p:inputText id="nome" size="60" maxlength="80" />
-			
+
 			<p:outputLabel value="Categoria" for="categoria" />
 			<p:selectOneMenu id="categoria">
-				<f:selectItem itemLabel="Selecione a categoria"/>
+				<f:selectItem itemLabel="Selecione a categoria" />
 			</p:selectOneMenu>
+
+			<p:outputLabel value="Subcategoria" for="SubCategoria" />
+			<p:selectOneMenu id="SubCategoria">
+				<f:selectItem itemLabel="Selecione a Subcategoria" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Valor unitário" for="valorUnitario" />
+			<p:inputText id="valorUnitario" size="10" maxlength="10"
+				styleClass="moeda" />
+
+			<p:outputLabel value="Estoque" for="estoque" />
+			<p:inputText id="estoque" size="10" maxlength="4" />
+
 		</p:panelGrid>
 	</ui:define>
 
