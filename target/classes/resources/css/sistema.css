@@ -7,7 +7,7 @@ body {
 	font-weight: normal;
 }
 
-header, link, graphicImage { /*header é o utilizado no curso*/
+header {
 	padding: 5px 0px;
 	margin-bottom: 20px;
 	height: 40px;
@@ -22,4 +22,50 @@ header, link, graphicImage { /*header é o utilizado no curso*/
 	width: 170px;
 }
 
+header > div {
+	margin-left: 8px;
+}
+
+footer {
+	padding: 0px 8px;
+	margin-bottom: 10px;
+}
+
+#conteudo {
+	padding: 0px 8px;
+}
+
+#login-dialog {
+	width: 290px;
+	margin: auto;
+	margin-top: 150px;
+}
+
+.grid-login {
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	margin-top: 8px;
+	padding: 10px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	padding: 0px;
+	margin: 0px;
+}
+
+#painel {
+	width: 100%; 
+	margin-top: 20px;
+}
+
+#botao-novo {
+	margin-right: 10px; 
+}
+
+.rotulo {
+	width: 150px;
+}
 
