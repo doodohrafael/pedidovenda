@@ -66,8 +66,9 @@ h1 {
 }
 
 .rotulo {
-	width: 150px;
+	width: 100px;
 }
+
 
 .ajax-status {
 	position: fixed;
@@ -79,4 +80,6 @@ h1 {
 	width: 40px;
 }
 
-
+.ui-toolbar button {
+	margin-right: 10px;
+}
