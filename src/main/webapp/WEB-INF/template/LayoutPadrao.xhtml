@@ -24,10 +24,34 @@
 	</p:ajaxStatus>
 
 	<header>
-		<div>
-			<h:link>
+		<div style="float: left;">
+			<h:link outcome="/Home">
 				<h:graphicImage id="tam-logo-header" library="images" name="logo-algaworks.png" />
 			</h:link>
+		</div>
+		
+		<div style=" float: right; margin-right: 110px;">
+			<span style="float: left; height: 30px; line-height: 30px; margin-right: 60px;">
+				Olá usuário!
+			</span>
+		
+			<h:form style="display: inline-block;">
+				<p:menubar styleClass="menu-sistema">
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Clientes" />
+						<p:menuitem value="Usuários" />
+						<p:separator />
+						<p:menuitem value="Categorias" />
+						<p:menuitem value="Produtos" outcome="/produtos/PesquisaProdutos" />
+					</p:submenu>
+					<p:submenu label="Pedidos">
+						<p:menuitem value="Novo pedido" outcome="/produtos/CadastroProduto" />
+						<p:menuitem value="Pesquisa" outcome="/produtos/PesquisaProdutos" />
+					</p:submenu>
+				
+					<p:menuitem value="Sair" />
+				</p:menubar>
+			</h:form>
 		</div>
 	</header>
 

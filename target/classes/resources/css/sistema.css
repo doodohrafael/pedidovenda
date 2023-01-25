@@ -83,3 +83,26 @@ h1 {
 .ui-toolbar button {
 	margin-right: 10px;
 }
+
+.menu-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: 0px !important;
+}
+
+/* Cor texto menu hover */
+body .ui-menu .ui-menu-list .ui-menuitem.ui-menuitem-active > .ui-menuitem-link .ui-menuitem-text {
+	color: #2196F3 !important;
+}
+
+/* Cor texto menu */
+body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link > span {
+	color: #2196F3 !important;
+	font-weight: bold !important;
+}
+
+/* Posião dos menuitens */
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
+	padding: 0.35rem 2rem;
+}
+
