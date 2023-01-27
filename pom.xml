@@ -9,6 +9,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>https://repository.primefaces.org/org/primefaces/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 	<dependencies>
 
 		<dependency>
@@ -22,25 +31,30 @@
 			<artifactId>primefaces</artifactId>
 			<version>11.0.0</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-		
-		<!-- Para conseguir por um jsf do mojarra mais recente -->
+
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId> <!-- Red Hat -->
-			<artifactId>weld-servlet-shaded</artifactId>
-			<version>3.1.2.Final</version>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>3.1.9.Final</version>
 		</dependency>
 
 	</dependencies>
