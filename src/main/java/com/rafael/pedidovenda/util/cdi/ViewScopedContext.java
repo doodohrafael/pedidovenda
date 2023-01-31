@@ -19,6 +19,7 @@ import javax.faces.event.SystemEventListener;
  *
  * @author Steve Taylor
  */
+@SuppressWarnings("deprecation")
 public class ViewScopedContext implements Context, SystemEventListener
 {
 	@Override
@@ -32,11 +33,13 @@ public class ViewScopedContext implements Context, SystemEventListener
 			isJsfSubscribed = true;
 		}
 
+		@SuppressWarnings("unchecked")
 		T instance = (T) getComponentInstanceMap().get(component);
 
 		return instance;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T get(final Contextual<T> component, final CreationalContext<T> creationalContext)
 	{
@@ -107,6 +110,7 @@ public class ViewScopedContext implements Context, SystemEventListener
 	 *
 	 * @see javax.faces.event.SystemEventListener#processEvent(javax.faces.event.SystemEvent)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void processEvent(final SystemEvent event)
 	{
@@ -122,8 +126,10 @@ public class ViewScopedContext implements Context, SystemEventListener
 					/*
 					 * No way to inform the compiler of type <T> information, so it has to be abandoned here :(
 					 */
+					@SuppressWarnings("rawtypes")
 					Contextual contextual = componentEntry.getKey();
 					Object instance = componentEntry.getValue();
+					@SuppressWarnings("rawtypes")
 					CreationalContext creational = creationalContextMap.get(contextual);
 
 					contextual.destroy(instance, creational);
