@@ -1,5 +1,7 @@
 package com.rafael.pedidovenda.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -23,7 +25,7 @@ public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long id;
 
