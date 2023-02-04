@@ -2,9 +2,11 @@ package com.rafael.pedidovenda.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
@@ -22,14 +24,26 @@ public class Endereco implements Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 
+	@Column(nullable = false, length = 150)
 	private String logradouro;
+
+	@Column(nullable = false, length = 20)
 	private String numero;
+
+	@Column(length = 150)
 	private String complemento;
+
+	@Column(nullable = false, length = 60)
 	private String cidade;
+
+	@Column(nullable = false, length = 60)
 	private String uf;
+
+	@Column(nullable = false, length = 9)
 	private String cep;
-	
+
 	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Cliente cliente;
 
 }
