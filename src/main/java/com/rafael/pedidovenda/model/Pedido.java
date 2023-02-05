@@ -21,6 +21,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
+
 import static javax.persistence.TemporalType.TIMESTAMP;
 import static javax.persistence.TemporalType.DATE;
 
@@ -80,5 +82,12 @@ public class Pedido implements Serializable {
 
 	@OneToMany(mappedBy = "pedido", cascade = ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
+	
+	@Transient
+	public BigDecimal getValorSubtotal() {
+		return this.getValorTotal()
+				   .subtract(this.getValorFrete())
+				   .add(this.getValorDesconto());
+	}
 
 }
