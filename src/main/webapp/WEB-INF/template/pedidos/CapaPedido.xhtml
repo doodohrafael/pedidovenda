@@ -53,8 +53,7 @@
 		
 		<p:outputLabel value="Total do pedido" style="font-weight: bold; 
 			font-size: 1.1em;" />
-		<h:outputText value="R$ 0,00" style="font-weight: bold; 
-			font-size: 1.1em;" id="totalPedido" 
+		<h:outputText style="font-weight: bold; font-size: 1.1em;" id="totalPedido" 
 			value="#{cadastroPedidoBean.pedido.valorTotal}">
 				<f:convertNumber type="currency"/>
 			</h:outputText>
