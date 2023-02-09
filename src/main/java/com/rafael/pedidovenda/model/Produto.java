@@ -18,6 +18,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.rafael.pedidovenda.validation.SKU;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -39,7 +41,7 @@ public class Produto implements Serializable {
 	@Column(nullable = false, length = 80)
 	private String nome;
 
-	@NotBlank
+	@NotBlank @SKU
 	@Column(nullable = false, length = 20, unique = true)
 	private String sku;
 
@@ -56,12 +58,12 @@ public class Produto implements Serializable {
 	@JoinColumn(nullable = false)
 	private Categoria categoria;
 	
-	@NotNull @Min(0) @Max(9999)
+	@NotNull @Min(0) @Max(value = 9999, message = "tem um valor muito alto")
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
 	
-	@NotNull
+	@NotNull(message = "é obrigatório")
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
