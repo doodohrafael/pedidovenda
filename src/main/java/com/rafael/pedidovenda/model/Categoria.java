@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import static org.hibernate.annotations.LazyCollectionOption.FALSE;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -36,6 +39,7 @@ public class Categoria implements Serializable {
 	@JoinColumn(name = "categoria_pai_id")
 	private Categoria categoriaPai;
 	
+	@LazyCollection(value = FALSE)
 	@OneToMany(mappedBy = "categoriaPai", cascade = ALL)
 	private List<Categoria> subcategorias = new ArrayList<>();
 

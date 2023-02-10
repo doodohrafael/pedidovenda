@@ -12,7 +12,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/pedidovenda" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="jPbidV*m#hAaHu1^m2yz" />
-			<property name="javax.persistence.jdbc.drive" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>

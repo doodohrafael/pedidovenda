@@ -9,17 +9,17 @@ import com.rafael.pedidovenda.model.Endereco;
 
 import static com.rafael.pedidovenda.model.TipoPessoa.FISICA;
 
-import static javax.persistence.Persistence.createEntityManagerFactory;;
+import static javax.persistence.Persistence.createEntityManagerFactory;
 
 public class Teste {
 
 	public static void main(String[] args) {
 
-		EntityManagerFactory factory = createEntityManagerFactory("PedidoPU");
-		EntityManager manager = factory.createEntityManager();
-
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
+//		EntityManagerFactory factory = createEntityManagerFactory("PedidoPU");
+//		EntityManager manager = factory.createEntityManager();
+//
+//		EntityTransaction trx = manager.getTransaction();
+//		trx.begin();
 
 //		Cliente cliente = new Cliente();
 //		cliente.setNome("Douglas Rafael");
@@ -41,7 +41,7 @@ public class Teste {
 //		
 //		manager.persist(cliente);
 		
-		trx.commit();
+//		trx.commit();
 
 	}
 

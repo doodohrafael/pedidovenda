@@ -1,4 +1,4 @@
-package com.rafael.pedidovenda;
+package com.rafael.pedidovenda.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
