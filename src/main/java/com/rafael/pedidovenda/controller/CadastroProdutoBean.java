@@ -6,13 +6,10 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-
-import static javax.persistence.Persistence.createEntityManagerFactory;
 
 import com.rafael.pedidovenda.model.Categoria;
 import com.rafael.pedidovenda.model.Produto;
+import com.rafael.pedidovenda.repository.Categorias;
 
 @Named
 @ViewScoped
@@ -21,7 +18,7 @@ public class CadastroProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private EntityManager manager;
+	private Categorias categorias;
 
 	private Produto produto;
 	
@@ -32,10 +29,7 @@ public class CadastroProdutoBean implements Serializable {
 	}
 	
 	public void inicializar() {
-		System.out.println("Inicializando...");
-		categoriasRaizes = manager
-				.createQuery("from Categoria", Categoria.class)
-			    .getResultList();
+		categoriasRaizes = categorias.raizes();
 	}
 
 	public void salvar() {
