@@ -22,5 +22,9 @@ public class Categorias implements Serializable {
 		return manager.createQuery(jpql, 
 				Categoria.class).getResultList();
 	}
+
+	public Categoria porId(Long id) {
+		return manager.find(Categoria.class, id);
+	}
 	
 }

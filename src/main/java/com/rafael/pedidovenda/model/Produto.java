@@ -53,7 +53,6 @@ public class Produto implements Serializable {
 	@Column(name = "quantidade_estoque", nullable = false, length = 5)
 	private Integer quantidadeEstoque;
 
-	@Getter(value = NONE)
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Categoria categoria;
@@ -68,7 +67,7 @@ public class Produto implements Serializable {
 		return valorUnitario;
 	}
 	
-	@NotNull
+//	@NotNull
 	public Categoria getCategoria() {
 		return categoria;
 	}
