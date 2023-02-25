@@ -67,7 +67,7 @@ public class Produto implements Serializable {
 		return valorUnitario;
 	}
 	
-//	@NotNull
+	@NotNull
 	public Categoria getCategoria() {
 		return categoria;
 	}

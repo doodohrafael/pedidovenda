@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import com.rafael.pedidovenda.model.Categoria;
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.Categorias;
+import static com.rafael.pedidovenda.util.jsf.FacesUtil.isNotPostback;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,21 +30,31 @@ public class CadastroProdutoBean implements Serializable {
 	
 	@Setter 
 	private Categoria categoriaPai;
-
+	
 	@Getter
 	private List<Categoria> categoriasRaizes;
-
+	@Getter
+	private List<Categoria> subcategorias;
+	
 	public CadastroProdutoBean() {
 		produto = new Produto();
 	}
 
 	public void inicializar() {
-		categoriasRaizes = categorias.raizes();
+		if(isNotPostback()) {
+			categoriasRaizes = categorias.raizes();
+		}
 	}
 
 	public void salvar() {
 		System.err.println("Categoria pai selecionada: " + 
 				categoriaPai.getDescricao());
+		System.err.println("Subcategoria selecionada: " + 
+				produto.getCategoria().getDescricao());
+	}
+	
+	public void carregarSubcategorias() {
+		subcategorias = categorias.subcategorias(categoriaPai);
 	}
 	
 	@NotNull
