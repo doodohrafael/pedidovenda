@@ -19,13 +19,7 @@ public class Produtos implements Serializable {
 	private String jpql;
 
 	public Produto guardar(Produto produto) {
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
-		
-		produto = manager.merge(produto);
-		
-		trx.commit();
-		return produto;
+		return produto = manager.merge(produto);
 	}
 
 	public Produto porSku(String sku) {

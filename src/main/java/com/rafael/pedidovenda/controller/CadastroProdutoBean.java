@@ -66,7 +66,6 @@ public class CadastroProdutoBean implements Serializable {
 		addInfoMessage("Produto salvo com sucesso!");
 	}
 	
-	
 	public void carregarSubcategorias() {
 		subcategorias = categorias.subcategorias(categoriaPai);
 	}

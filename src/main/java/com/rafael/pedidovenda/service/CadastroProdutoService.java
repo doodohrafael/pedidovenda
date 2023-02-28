@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.Produtos;
+import com.rafael.pedidovenda.util.jpa.Transactional;
 
 public class CadastroProdutoService implements Serializable {
 
@@ -14,6 +15,7 @@ public class CadastroProdutoService implements Serializable {
 	@Inject
 	private Produtos produtos;
 	
+	@Transactional
 	public Produto salvar(Produto produto) {
 		Produto produtoExistente = produtos.porSku(produto.getSku());
 		
