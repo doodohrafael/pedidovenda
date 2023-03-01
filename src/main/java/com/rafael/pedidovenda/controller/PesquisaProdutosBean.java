@@ -1,43 +1,39 @@
 package com.rafael.pedidovenda.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-@SuppressWarnings("deprecation")
+import com.rafael.pedidovenda.model.Produto;
+import com.rafael.pedidovenda.repository.Produtos;
+import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
+
+import lombok.Getter;
+
 @Named
 @ViewScoped
 public class PesquisaProdutosBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private Produtos produtos;
 
-	private List<Integer> produtosFiltrados;
-	private Integer produtoSelecionado;
+	@Getter 
+	private List<Produto> produtosFiltrados;
 	
+	@Getter
+	private ProdutoFilter filtro;
+
 	public PesquisaProdutosBean() {
-		produtosFiltrados = new ArrayList<>();
-		for(int i = 0; i < 50; i++) {
-			produtosFiltrados.add(i);
-			System.out.println(i);
-		}
+		filtro = new ProdutoFilter();
 	}
 	
-	public void excluirProduto() {
-		produtosFiltrados.remove(produtoSelecionado);
+	public void pesquisar() {
+		produtosFiltrados = produtos.filtrados(filtro);
 	}
 	
-	public List<Integer> getProdutosFiltrados() {
-		return produtosFiltrados;
-	}
-	
-	public Integer getProdutoSelecionado() {
-		return produtoSelecionado;
-	}
-	
-	public void setProdutoSelecionado(Integer produtoSelecionado) {
-		this.produtoSelecionado = produtoSelecionado;
-	}
 }

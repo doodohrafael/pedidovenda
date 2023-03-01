@@ -1,13 +1,23 @@
 package com.rafael.pedidovenda.repository;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.hibernate.criterion.MatchMode.ANYWHERE;
+import static org.hibernate.criterion.Order.asc;
+import static org.hibernate.criterion.Restrictions.eq;
+import static org.hibernate.criterion.Restrictions.ilike;
+
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import com.rafael.pedidovenda.model.Produto;
+import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
 
 public class Produtos implements Serializable {
 
@@ -34,6 +44,22 @@ public class Produtos implements Serializable {
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+	
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public List<Produto> filtrados(ProdutoFilter filtro) {
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Produto.class);
+		
+		if(isNotBlank(filtro.getSku())) {
+			criteria.add(eq("sku", filtro.getSku()));
+		}
+		
+		if(isNotBlank(filtro.getNome())) {
+			criteria.add(ilike("nome", filtro.getNome(), ANYWHERE));
+		}
+		
+		return criteria.addOrder(asc("nome")).list();
 	}
 
 }
