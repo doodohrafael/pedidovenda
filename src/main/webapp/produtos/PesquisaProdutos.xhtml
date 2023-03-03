@@ -13,6 +13,7 @@
 			<p:messages>
 				<p:autoUpdate />
 			</p:messages>
+			
 			<p:toolbar style="margin-top: 20px;">
 				<p:toolbarGroup>
 					<p:commandButton value="Pesquisar" action="#{pesquisaProdutosBean.pesquisar}"
@@ -61,11 +62,17 @@
 				</p:column>
 
 				<p:column style="text-align: center; width: 100px;">
-					<p:button icon="pi pi-pencil" title="Editar" />
+				
+					<p:button icon="pi pi-pencil" title="Editar" 
+						outcome="/produtos/CadastroProduto" >
+						<f:param name="produto" value="#{produto.id}" />
+					</p:button>
+					
 					<p:commandButton icon="pi pi-trash" title="Excluir"
 						oncomplete="PF('confirmacaoExclusao').show();">
 						<f:setPropertyActionListener value="#{produto}" 
 							target="#{pesquisaProdutosBean.produtoSelecionado}" />
+							
 					</p:commandButton>
 				</p:column>
 
