@@ -1,6 +1,9 @@
 select *
 from produto;
 
+select *
+from categoria;
+
 delete from produto 
 where id >= 7 and id <= 21;
 

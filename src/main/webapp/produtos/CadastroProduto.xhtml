@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui">
 
-	<ui:define name="titulo">Novo Produto</ui:define>
+	<ui:define name="titulo">#{cadastroProdutoBean.editando ? 'Edição de produto' : 'Novo produto'}</ui:define>
 
 	<ui:define name="corpo">
 		<f:metadata>
@@ -16,7 +16,7 @@
 		</f:metadata>
 
 		<h:form>
-			<h1>Novo Produto</h1>
+			<h1>#{cadastroProdutoBean.editando ? 'Edição de produto' : 'Novo produto'}</h1>
 
 			<p:messages closable="true">
 				<p:autoUpdate />

@@ -32,10 +32,11 @@ public class ProdutoConverter implements Converter<Produto> {
 		return produto;
 	}
 
-	@Override // Erro do botão no esta aqui. O value vem null.
+	@Override
 	public String getAsString(FacesContext context, UIComponent component, Produto value) {
 		if (value != null) {
-			return ((Produto) value).getId().toString();
+			Produto produto = (Produto) value;
+			return produto.getId() == null ? null : produto.getId().toString();
 		}
 		return "";
 	}
