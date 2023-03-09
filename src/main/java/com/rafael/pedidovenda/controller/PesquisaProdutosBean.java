@@ -10,8 +10,10 @@ import javax.inject.Named;
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
+import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Named
 @ViewScoped
@@ -27,6 +29,9 @@ public class PesquisaProdutosBean implements Serializable {
 	
 	@Getter
 	private ProdutoFilter filtro;
+	
+	@Getter @Setter 
+	private Produto produtoSelecionado;
 
 	public PesquisaProdutosBean() {
 		filtro = new ProdutoFilter();
@@ -34,6 +39,13 @@ public class PesquisaProdutosBean implements Serializable {
 	
 	public void pesquisar() {
 		produtosFiltrados = produtos.filtrados(filtro);
+	}
+	
+	public void excluir() {
+		produtos.remover(produtoSelecionado);
+		produtosFiltrados.remove(produtoSelecionado);
+		addInfoMessage("Produto " + produtoSelecionado.getSku() 
+			+ " excluído com sucesso!");
 	}
 	
 }

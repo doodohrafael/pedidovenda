@@ -12,12 +12,15 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
+import com.rafael.pedidovenda.service.NegocioException;
+import com.rafael.pedidovenda.util.jpa.Transactional;
 
 public class Produtos implements Serializable {
 
@@ -66,4 +69,15 @@ public class Produtos implements Serializable {
 		return manager.find(Produto.class, id);
 	}
 
+	@Transactional
+	public void remover(Produto produto) {
+		try {
+			produto = porId(produto.getId());
+			manager.remove(produto);
+			manager.flush();
+		} catch (PersistenceException e) {
+			throw new NegocioException("Produto não pode ser excluído.");
+		}
+	}
+	
 }

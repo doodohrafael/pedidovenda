@@ -1,5 +1,6 @@
 select *
-from produto;
+from produto
+order by nome asc;
 
 select *
 from categoria;
