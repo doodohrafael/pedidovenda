@@ -4,28 +4,43 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@SuppressWarnings("deprecation")
-@ManagedBean
-@RequestScoped
+import com.rafael.pedidovenda.model.Pedido;
+import com.rafael.pedidovenda.model.StatusPedido;
+import com.rafael.pedidovenda.repository.Pedidos;
+import com.rafael.pedidovenda.repository.filter.PedidoFilter;
+
+import lombok.Getter;
+
+@Named
+@ViewScoped
 public class PesquisaPedidosBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	private List<Integer> pedidosFiltrados;
+	
+	@Inject
+	private Pedidos pedidos;
+	
+	@Getter
+	private List<Pedido> pedidosFiltrados;
+	
+	@Getter
+	private PedidoFilter filtro;
 	
 	public PesquisaPedidosBean() {
+		filtro = new PedidoFilter();
 		pedidosFiltrados = new ArrayList<>();
-		for(int i = 0; i < 50; i++) {
-			pedidosFiltrados.add(i);
-			System.out.println(i);
-		}
 	}
 	
-	public List<Integer> getPedidosFiltrados() {
-		return pedidosFiltrados;
+	public void pesquisar() {
+		pedidosFiltrados = pedidos.filtrados(filtro);
 	}
+	
+	public StatusPedido[] getStatuses() {
+		return StatusPedido.values();
+	}
+	
 }
-

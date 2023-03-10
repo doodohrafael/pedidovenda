@@ -7,7 +7,6 @@ import com.rafael.pedidovenda.validation.SKU;
 import lombok.Getter;
 import lombok.Setter;
 
-
 public class ProdutoFilter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
