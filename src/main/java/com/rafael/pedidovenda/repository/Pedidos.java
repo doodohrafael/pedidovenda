@@ -67,4 +67,8 @@ public class Pedidos implements Serializable {
 		return criteria.addOrder(asc("id")).list();
 	}
 
+	public Pedido porId(Long id) {
+		return manager.find(Pedido.class, id);
+	}
+
 }

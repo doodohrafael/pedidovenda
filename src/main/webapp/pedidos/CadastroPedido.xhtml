@@ -6,15 +6,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui">
 
-	<ui:define name="titulo">Novo Pedido</ui:define>
+	<ui:define name="titulo">#{cadastroPedidoBean.editando ? 'Edição de pedido' : 'Novo pedido'}</ui:define>
 	
 	<ui:define name="corpo">
 		<f:metadata>
+			<o:viewParam name="pedido" value="#{cadastroPedidoBean.pedido}" />
 			<f:event listener="#{cadastroPedidoBean.inicializar}"
 				type="preRenderView" />
 		</f:metadata>
 		<h:form>
-			<h1>Novo Pedido</h1>
+			<h1>#{cadastroPedidoBean.editando ? 'Edição de pedido' : 'Novo pedido'}</h1>
 			
 			<p:messages closable="true">
 				<p:autoUpdate />

@@ -70,5 +70,9 @@ public class CadastroPedidoBean implements Serializable {
 	public FormaPagamento[] getFormasPagamento() {
 		return FormaPagamento.values();
 	}
+	
+	public boolean isEditando() {
+		return this.pedido.getId() != null;
+	}
 
 }
