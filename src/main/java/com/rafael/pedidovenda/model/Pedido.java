@@ -6,12 +6,13 @@ import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.TemporalType.DATE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 import static lombok.AccessLevel.NONE;
+import static java.math.BigDecimal.ZERO;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -40,7 +41,7 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue //(strategy = IDENTITY)
+	@GeneratedValue(strategy = IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long id;
 
@@ -60,20 +61,20 @@ public class Pedido implements Serializable {
 
 	@Getter(value = NONE)
 	@Column(name = "valor_frete", nullable = false, precision = 10, scale = 2)
-	private BigDecimal valorFrete;
+	private BigDecimal valorFrete = ZERO;
 
 	@Getter(value = NONE)
 	@Column(name = "valor_desconto", nullable = false, precision = 10, scale = 2)
-	private BigDecimal valorDesconto;
+	private BigDecimal valorDesconto = ZERO;
 
 	@Getter(value = NONE)
 	@Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
-	private BigDecimal valorTotal;
+	private BigDecimal valorTotal = ZERO;
 
 	@NotNull
 	@Enumerated(STRING)
 	@Column(nullable = false, length = 20)
-	private StatusPedido status;
+	private StatusPedido status = StatusPedido.ORCAMENTO;
 
 	@Getter(value = NONE)
 	@Enumerated(STRING)
@@ -99,12 +100,12 @@ public class Pedido implements Serializable {
 	@Transient
 	public BigDecimal getValorSubtotal() {
 		BigDecimal valorSubtotal = new BigDecimal(0.00);
-		valorTotal = new BigDecimal(60.41);
-		valorFrete = new BigDecimal(5.98);
-		valorDesconto = new BigDecimal(2.23);
-		valorSubtotal = this.getValorTotal()
-				.subtract(this.getValorFrete())
-				.add(this.getValorDesconto());
+//		valorTotal = new BigDecimal(60.41);
+//		valorFrete = new BigDecimal(5.98);
+//		valorDesconto = new BigDecimal(2.23);
+//		valorSubtotal = this.getValorTotal()
+//				.subtract(this.getValorFrete())
+//				.add(this.getValorDesconto());
 		return valorSubtotal;
 	}
 	
@@ -141,5 +142,15 @@ public class Pedido implements Serializable {
 	@NotNull
 	public Date getDataEntrega() {
 		return dataEntrega;
+	}
+	
+	@Transient
+	public boolean isNovo() {
+		return this.id == null;
+	}
+	
+	@Transient
+	public boolean isExistente() {
+		return !isNovo();
 	}
 }

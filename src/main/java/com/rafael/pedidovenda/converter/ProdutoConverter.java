@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import org.apache.commons.lang3.StringUtils;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.Produtos;
@@ -25,7 +25,7 @@ public class ProdutoConverter implements Converter<Produto> {
 	public Produto getAsObject(FacesContext context, UIComponent component, String value) {
 		Produto produto = new Produto();
 
-		if (StringUtils.isNotBlank(value)) {
+		if (isNotBlank(value)) {
 			Long valueId = Long.parseLong(value);
 			produto = produtos.porId(valueId);
 		}
