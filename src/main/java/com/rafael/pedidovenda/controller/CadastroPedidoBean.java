@@ -1,8 +1,10 @@
 package com.rafael.pedidovenda.controller;
 
+import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 import static com.rafael.pedidovenda.util.jsf.FacesUtil.isNotPostback;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
@@ -17,7 +19,6 @@ import com.rafael.pedidovenda.model.Usuario;
 import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.repository.Usuarios;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
-import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -73,6 +74,12 @@ public class CadastroPedidoBean implements Serializable {
 	
 	public boolean isEditando() {
 		return this.pedido.getId() != null;
+	}
+	
+	public void recalcularPedido() {
+		this.pedido.recalcularValorTotal();
+//		this.pedido.setValorTotal(this.pedido.getValorSubtotal()
+//				.add(this.pedido.getValorFrete()));
 	}
 
 }

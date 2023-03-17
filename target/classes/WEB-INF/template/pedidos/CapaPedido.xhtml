@@ -41,6 +41,8 @@
 		<p:inputText id="valorFrete" size="10" maxlength="10" 
 			value="#{cadastroPedidoBean.pedido.valorFrete}" styleClass="moeda">
 				<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+				<p:ajax event="change" process="@this" update="totalPedido" 
+					listener="#{cadastroPedidoBean.recalcularPedido}" />
 			</p:inputText>
 		
 		<p:outputLabel value="Subtotal" style="font-weight: bold;" />
@@ -51,7 +53,7 @@
 		<p:inputText id="valorDesconto" size="10" maxlength="10" 
 			value="#{cadastroPedidoBean.pedido.valorDesconto}" styleClass="moeda">
 				<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-			</p:inputText>
+		</p:inputText>
 		
 		<p:outputLabel value="Total do pedido" style="font-weight: bold; 
 			font-size: 1.1em;" />

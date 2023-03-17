@@ -97,17 +97,17 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "pedido", cascade = ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
 	
-	@Transient
-	public BigDecimal getValorSubtotal() {
-		BigDecimal valorSubtotal = new BigDecimal(0.00);
+//	@Transient
+//	public BigDecimal getValorSubtotal() {
+//		BigDecimal valorSubtotal = new BigDecimal(50.00);
 //		valorTotal = new BigDecimal(60.41);
 //		valorFrete = new BigDecimal(5.98);
 //		valorDesconto = new BigDecimal(2.23);
 //		valorSubtotal = this.getValorTotal()
 //				.subtract(this.getValorFrete())
 //				.add(this.getValorDesconto());
-		return valorSubtotal;
-	}
+//		return valorSubtotal;
+//	}
 	
 	@NotNull
 	public BigDecimal getValorFrete() {
@@ -152,5 +152,26 @@ public class Pedido implements Serializable {
 	@Transient
 	public boolean isExistente() {
 		return !isNovo();
+	}
+	
+	@Transient
+	public BigDecimal getValorSubtotal() {
+		return this.getValorTotal()
+				.subtract(this.getValorFrete())
+				.subtract(this.getValorDesconto());
+	}
+
+//	@Transient
+	public void recalcularValorTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		total = total.add(this.getValorFrete().subtract(this.getValorDesconto()));
+		
+		for(ItemPedido item : this.getItens()) {
+			if (item.getProduto() != null && item.getProduto().getId() != null) {
+				total = total.add(item.getValorTotal());
+			}
+		}
+		
+		this.setValorTotal(total);
 	}
 }

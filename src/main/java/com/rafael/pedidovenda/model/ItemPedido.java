@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,5 +43,10 @@ public class ItemPedido implements Serializable {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Pedido pedido;
+
+	@Transient
+	public BigDecimal getValorTotal() {
+		return this.getValorTotal().multiply(new BigDecimal(this.getQuantidade()));
+	}
 
 }
