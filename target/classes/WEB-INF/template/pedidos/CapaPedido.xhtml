@@ -47,12 +47,16 @@
 		
 		<p:outputLabel value="Subtotal" style="font-weight: bold;" />
 		<h:outputText value="#{cadastroPedidoBean.pedido.valorSubtotal}" 
-			style="font-weight: bold;" id="subtotal" />
+			style="font-weight: bold;" id="subtotal">
+			<f:convertNumber type="currency" />
+		</h:outputText>
 		
 		<p:outputLabel value="Valor de desconto" for="valorDesconto" />
 		<p:inputText id="valorDesconto" size="10" maxlength="10" 
 			value="#{cadastroPedidoBean.pedido.valorDesconto}" styleClass="moeda">
 				<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+				<p:ajax event="change" process="@this" update="totalPedido" 
+					listener="#{cadastroPedidoBean.recalcularPedido}" />
 		</p:inputText>
 		
 		<p:outputLabel value="Total do pedido" style="font-weight: bold; 

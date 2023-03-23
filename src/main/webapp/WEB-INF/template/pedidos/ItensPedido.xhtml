@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:dataTable value="#{cadastroPedidoBean.itens}" var="item"
+	<p:dataTable value="#{cadastroPedidoBean.pedido.itens}" var="item"
 		id="tabelaItens">
 		<p:column headerText="SKU" style="text-align: center; width: 100px;">
 			<p:inputText size="8" />

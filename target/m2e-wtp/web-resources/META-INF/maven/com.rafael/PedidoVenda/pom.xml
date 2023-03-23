@@ -1,75 +1,79 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rafael</groupId>
 	<artifactId>PedidoVenda</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>prime-repo</id>
 			<name>PrimeFaces Maven Repository</name>
-			<url>https://repository.primefaces.org/org/primefaces/</url>
+			<url>http://repository.primefaces.org</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
+
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>3.0.3</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
 			<version>2.3.9</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>11.0.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId> <!-- Red Hat - Para Beans CDI -->
+			<groupId>org.jboss.weld.servlet</groupId> <!-- Red Hat - Para Beans
+			CDI -->
 			<artifactId>weld-servlet-core</artifactId>
 			<version>3.1.9.Final</version>
 		</dependency>
-		
+
 		<!-- Para manipular logs -->
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Biblioteca de utilitários -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -77,7 +81,7 @@
 			<version>3.1</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Implementação do Bean Validation -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
@@ -85,7 +89,7 @@
 			<version>6.0.23.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Núcleo do Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -93,7 +97,7 @@
 			<version>5.6.14.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Implementação do EntityManager da JPA -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -101,7 +105,7 @@
 			<version>5.6.14.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Driver JDBC do MySql -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -109,7 +113,7 @@
 			<version>8.0.30</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Biblioteca Omnifaces para JSF similar ao PF -->
 		<dependency>
 			<groupId>org.omnifaces</groupId>
@@ -117,7 +121,7 @@
 			<version>3.14.2</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<finalName>PedidoVenda</finalName>

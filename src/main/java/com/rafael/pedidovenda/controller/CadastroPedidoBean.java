@@ -4,7 +4,6 @@ import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 import static com.rafael.pedidovenda.util.jsf.FacesUtil.isNotPostback;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
@@ -51,6 +50,11 @@ public class CadastroPedidoBean implements Serializable {
 	public void inicializar() {
 		if(isNotPostback()) {
 			vendedores = usuarios.vendedores();
+			pedido.adicionarItemVazio();
+			recalcularPedido();
+		}
+		if(pedido != null && pedido.getId() == null) {
+			pedido.setEnderecoEntrega(new EnderecoEntrega());
 		}
 	}
 	
@@ -77,9 +81,9 @@ public class CadastroPedidoBean implements Serializable {
 	}
 	
 	public void recalcularPedido() {
-		this.pedido.recalcularValorTotal();
-//		this.pedido.setValorTotal(this.pedido.getValorSubtotal()
-//				.add(this.pedido.getValorFrete()));
+		if(this.pedido != null) {
+			this.pedido.recalcularValorTotal();
+		}
 	}
 
 }
