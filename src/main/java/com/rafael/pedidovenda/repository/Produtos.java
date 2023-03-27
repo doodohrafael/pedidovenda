@@ -79,5 +79,5 @@ public class Produtos implements Serializable {
 			throw new NegocioException("Produto não pode ser excluído.");
 		}
 	}
-	
+
 }

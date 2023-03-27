@@ -14,9 +14,12 @@ import com.rafael.pedidovenda.model.Cliente;
 import com.rafael.pedidovenda.model.EnderecoEntrega;
 import com.rafael.pedidovenda.model.FormaPagamento;
 import com.rafael.pedidovenda.model.Pedido;
+import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.model.Usuario;
 import com.rafael.pedidovenda.repository.Clientes;
+import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
+import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
 
 import lombok.Getter;
@@ -32,6 +35,9 @@ public class CadastroPedidoBean implements Serializable {
 	private CadastroPedidoService cadastroPedidoService;
 	
 	@Inject
+	private Produtos produtos;
+	
+	@Inject
 	private Clientes clientes;
 	
 	@Inject
@@ -39,6 +45,9 @@ public class CadastroPedidoBean implements Serializable {
 
 	@Getter @Setter
 	private Pedido pedido;
+	
+	@Getter @Setter
+	private Produto produtoLinhaEditavel;
 	
 	@Getter
 	private List<Usuario> vendedores;
@@ -70,6 +79,12 @@ public class CadastroPedidoBean implements Serializable {
 	
 	public List<Cliente> completarCliente(String nome) {
 		return this.clientes.porNome(nome);
+	}
+	
+	public List<Produto> completarProduto(String nome) {
+		ProdutoFilter filtro = new ProdutoFilter();
+		filtro.setNome(nome);
+		return this.produtos.filtrados(filtro);
 	}
 	
 	public FormaPagamento[] getFormasPagamento() {
