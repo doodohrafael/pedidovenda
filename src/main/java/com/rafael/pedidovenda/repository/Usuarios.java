@@ -15,9 +15,8 @@ public class Usuarios implements Serializable {
 	@Inject
 	private EntityManager manager;
 	
-	private String jpql;
-
 	public List<Usuario> vendedores() {
+		String jpql;
 		jpql = "from Usuario";
 		return manager.createQuery(jpql, Usuario.class)
 				.getResultList();

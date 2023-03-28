@@ -20,7 +20,6 @@ import static org.hibernate.criterion.MatchMode.ANYWHERE;
 
 import com.rafael.pedidovenda.model.Pedido;
 import com.rafael.pedidovenda.repository.filter.PedidoFilter;
-import com.rafael.pedidovenda.service.NegocioException;
 
 public class Pedidos implements Serializable {
 

@@ -16,9 +16,8 @@ public class Clientes implements Serializable {
 	@Inject
 	private EntityManager manager;
 
-	private String jpql;
-
 	public List<Cliente> porNome(String nome) {
+		String jpql;
 		jpql = "from Cliente where upper(nome) like :nome";
 		return manager.createQuery(jpql, Cliente.class)
 				.setParameter("nome", nome.toUpperCase() + "%")

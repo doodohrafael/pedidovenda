@@ -13,13 +13,13 @@ import javax.inject.Named;
 import com.rafael.pedidovenda.model.Cliente;
 import com.rafael.pedidovenda.model.EnderecoEntrega;
 import com.rafael.pedidovenda.model.FormaPagamento;
+import com.rafael.pedidovenda.model.ItemPedido;
 import com.rafael.pedidovenda.model.Pedido;
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.model.Usuario;
 import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
-import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
 
 import lombok.Getter;
@@ -82,9 +82,7 @@ public class CadastroPedidoBean implements Serializable {
 	}
 	
 	public List<Produto> completarProduto(String nome) {
-		ProdutoFilter filtro = new ProdutoFilter();
-		filtro.setNome(nome);
-		return this.produtos.filtrados(filtro);
+		return produtos.porNome(nome);
 	}
 	
 	public FormaPagamento[] getFormasPagamento() {
@@ -98,6 +96,18 @@ public class CadastroPedidoBean implements Serializable {
 	public void recalcularPedido() {
 		if(this.pedido != null) {
 			this.pedido.recalcularValorTotal();
+		}
+	}
+	
+	public void carregarProdutoLinhaEditavel() {
+		ItemPedido item = pedido.getItens().get(0);
+		if (produtoLinhaEditavel != null) {
+			item.setProduto(produtoLinhaEditavel);
+			item.setValorUnitario(produtoLinhaEditavel.getValorUnitario());
+			
+			pedido.adicionarItemVazio();
+			produtoLinhaEditavel = null;
+			pedido.recalcularValorTotal();
 		}
 	}
 

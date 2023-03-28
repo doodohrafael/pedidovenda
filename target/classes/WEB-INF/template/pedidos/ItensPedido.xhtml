@@ -12,8 +12,10 @@
 		<p:column headerText="Produto">
 			<p:autoComplete size="150" value="#{cadastroPedidoBean.produtoLinhaEditavel}" 
 				completeMethod="#{cadastroPedidoBean.completarProduto}" var="produto" 
-				itemLabel="#{produto.nome}" itemValue="#{produto}" forceSelection="true" />
-				<p:ajax event="itemSelect" update="tabelaItens" />
+				itemLabel="#{produto.nome}" itemValue="#{produto}" forceSelection="true">
+				<p:ajax event="itemSelect" listener="#{cadastroPedidoBean.carregarProdutoLinhaEditavel}"
+					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal" />
+			</p:autoComplete>
 		</p:column>
 		<p:column headerText="Valor unitário" style="text-align: right; width: 120px;">
 			<h:outputText value="R$ 0,00" />

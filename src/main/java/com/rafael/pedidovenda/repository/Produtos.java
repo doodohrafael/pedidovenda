@@ -30,7 +30,7 @@ public class Produtos implements Serializable {
 	private EntityManager manager;
 	
 	private String jpql;
-
+	
 	public Produto guardar(Produto produto) {
 		return produto = manager.merge(produto);
 	}
@@ -78,6 +78,13 @@ public class Produtos implements Serializable {
 		} catch (PersistenceException e) {
 			throw new NegocioException("Produto não pode ser excluído.");
 		}
+	}
+
+	public List<Produto> porNome(String nome) {
+		jpql = "from Produto where upper(nome) like :nome";
+		return manager.createQuery(jpql, Produto.class)
+			   .setParameter("nome", nome.toUpperCase() + "%")
+			   .getResultList();
 	}
 
 }
