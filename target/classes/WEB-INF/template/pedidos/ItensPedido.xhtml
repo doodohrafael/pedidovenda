@@ -10,9 +10,12 @@
 			<p:inputText size="8" />
 		</p:column>
 		<p:column headerText="Produto">
+			<h:outputText value="#{item.produto.nome}" rendered="#{item.produtoAssociado}" />
+		
 			<p:autoComplete size="150" value="#{cadastroPedidoBean.produtoLinhaEditavel}" 
 				completeMethod="#{cadastroPedidoBean.completarProduto}" var="produto" 
-				itemLabel="#{produto.nome}" itemValue="#{produto}" forceSelection="true">
+				itemLabel="#{produto.nome}" itemValue="#{produto}" forceSelection="true"
+				rendered="#{not item.produtoAssociado}" >
 				<p:ajax event="itemSelect" listener="#{cadastroPedidoBean.carregarProdutoLinhaEditavel}"
 					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal" />
 			</p:autoComplete>
@@ -21,7 +24,7 @@
 			<h:outputText value="R$ 0,00" />
 		</p:column>
 		<p:column headerText="Quantidade" style="text-align: center; width: 100px;">
-			<p:inputText size="8" value="1" />
+			<p:inputText size="8" value="#{item.quantidade}" />
 		</p:column>
 		<p:column headerText="Estoque" style="text-align: center; width: 100px;">
 			<h:outputText value="0" />

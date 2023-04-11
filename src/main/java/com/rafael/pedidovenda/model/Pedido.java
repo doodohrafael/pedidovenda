@@ -97,18 +97,6 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "pedido", cascade = ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
 	
-//	@Transient
-//	public BigDecimal getValorSubtotal() {
-//		BigDecimal valorSubtotal = new BigDecimal(50.00);
-//		valorTotal = new BigDecimal(60.41);
-//		valorFrete = new BigDecimal(5.98);
-//		valorDesconto = new BigDecimal(2.23);
-//		valorSubtotal = this.getValorTotal()
-//				.subtract(this.getValorFrete())
-//				.add(this.getValorDesconto());
-//		return valorSubtotal;
-//	}
-	
 	@NotNull
 	public BigDecimal getValorFrete() {
 		return valorFrete;
@@ -177,9 +165,9 @@ public class Pedido implements Serializable {
 	public void adicionarItemVazio() {
 		if (isOrcamento()) {
 			Produto produto = new Produto();
-			produto.setQuantidadeEstoque(1);
 
 			ItemPedido item = new ItemPedido();
+			item.setQuantidade(1);
 			item.setProduto(produto);
 			item.setPedido(this);
 
