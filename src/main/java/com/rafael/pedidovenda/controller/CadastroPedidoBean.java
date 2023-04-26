@@ -143,6 +143,18 @@ public class CadastroPedidoBean implements Serializable {
 		
 		return existeItem;
 	}
+	
+	public void atualizarOuRemoverQuantidadeDoItem(ItemPedido item, int linha) {
+		if(item.getQuantidade() < 1) {
+			if(linha == 0) {
+				item.setQuantidade(1);
+			} else {
+				this.pedido.getItens().remove(linha);
+			}
+		}
+		
+		pedido.recalcularValorTotal();
+	}
 
 	@SKU
 	public String getSku() {
