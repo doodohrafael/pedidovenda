@@ -10,6 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 import com.rafael.pedidovenda.model.Cliente;
 import com.rafael.pedidovenda.model.EnderecoEntrega;
 import com.rafael.pedidovenda.model.FormaPagamento;
@@ -21,6 +23,8 @@ import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
+import com.rafael.pedidovenda.util.jsf.FacesUtil;
+import com.rafael.pedidovenda.validation.SKU;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,6 +52,9 @@ public class CadastroPedidoBean implements Serializable {
 	
 	@Getter @Setter
 	private Produto produtoLinhaEditavel;
+	
+	@Setter
+	private String sku;
 	
 	@Getter
 	private List<Usuario> vendedores;
@@ -99,16 +106,47 @@ public class CadastroPedidoBean implements Serializable {
 		}
 	}
 	
-	public void carregarProdutoLinhaEditavel() {
-		ItemPedido item = pedido.getItens().get(0);
-		if (produtoLinhaEditavel != null) {
-			item.setProduto(produtoLinhaEditavel);
-			item.setValorUnitario(produtoLinhaEditavel.getValorUnitario());
-			
-			pedido.adicionarItemVazio();
-			produtoLinhaEditavel = null;
-			pedido.recalcularValorTotal();
+	public void carregarProdutoPorSku() {
+		if (isNotEmpty(sku)) {
+			produtoLinhaEditavel = produtos.porSku(sku);
+			carregarProdutoLinhaEditavel();
 		}
+	}
+	
+	public void carregarProdutoLinhaEditavel() {
+		if (existeItemComProduto(produtoLinhaEditavel)) {
+			addInfoMessage("Já existe um item no pedido com o produto informado.");
+		} else {
+			ItemPedido item = pedido.getItens().get(0);
+			if (produtoLinhaEditavel != null) {
+				item.setProduto(produtoLinhaEditavel);
+				item.setValorUnitario(produtoLinhaEditavel.getValorUnitario());
+
+				pedido.adicionarItemVazio();
+				produtoLinhaEditavel = null;
+				sku = null;
+				pedido.recalcularValorTotal();
+			}
+		}
+	}
+	
+	private boolean existeItemComProduto(Produto produtoLinhaEditavel) {
+		boolean existeItem = false;
+		
+		for(ItemPedido item : pedido.getItens()) {
+			if (produtoLinhaEditavel != null && 
+					produtoLinhaEditavel.equals(item.getProduto())) {
+				existeItem = true;
+				break;
+			}
+		}
+		
+		return existeItem;
+	}
+
+	@SKU
+	public String getSku() {
+		return sku;
 	}
 
 }

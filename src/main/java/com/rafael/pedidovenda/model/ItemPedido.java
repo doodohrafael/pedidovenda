@@ -1,6 +1,7 @@
 package com.rafael.pedidovenda.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static java.math.BigDecimal.ZERO;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -31,10 +32,10 @@ public class ItemPedido implements Serializable {
 	private Long id;
 
 	@Column(nullable = false, length = 3)
-	private Integer quantidade;
+	private Integer quantidade = 1;
 
 	@Column(name = "valor_unitario", nullable = false, precision = 10, scale = 2)
-	private BigDecimal valorUnitario;
+	private BigDecimal valorUnitario = ZERO;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)

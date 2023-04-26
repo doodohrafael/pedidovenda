@@ -86,5 +86,5 @@ public class Produtos implements Serializable {
 			   .setParameter("nome", nome.toUpperCase() + "%")
 			   .getResultList();
 	}
-
+	
 }

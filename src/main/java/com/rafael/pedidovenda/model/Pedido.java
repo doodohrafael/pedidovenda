@@ -167,7 +167,6 @@ public class Pedido implements Serializable {
 			Produto produto = new Produto();
 
 			ItemPedido item = new ItemPedido();
-			item.setQuantidade(1);
 			item.setProduto(produto);
 			item.setPedido(this);
 
