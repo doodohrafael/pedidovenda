@@ -94,6 +94,7 @@ public class Pedido implements Serializable {
 	@Embedded
 	private EnderecoEntrega enderecoEntrega;
 
+	@Getter(NONE)
 	@OneToMany(mappedBy = "pedido", cascade = ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
 	
@@ -174,9 +175,27 @@ public class Pedido implements Serializable {
 		}
 	}
 
+	public void removerItemVazio() {
+		ItemPedido primeiroItemDaLista = getItens().get(0);
+		if (primeiroItemDaLista != null && 
+				primeiroItemDaLista.getProduto().getId() == null) {
+			getItens().remove(0);
+		} 
+	}
+	
 	@Transient
 	public boolean isOrcamento() {
 		return StatusPedido.ORCAMENTO.equals(this.getStatus());
 	}
+	
+	@Transient
+	public boolean isValorTotalNegativo() {
+		return getValorTotal().compareTo(ZERO) < 0;
+	}
+	
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
 	
 }

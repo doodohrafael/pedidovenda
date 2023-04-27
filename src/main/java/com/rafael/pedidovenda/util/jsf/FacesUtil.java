@@ -2,6 +2,7 @@ package com.rafael.pedidovenda.util.jsf;
 
 import static javax.faces.application.FacesMessage.SEVERITY_ERROR;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
+import static javax.faces.application.FacesMessage.SEVERITY_WARN;
 
 import javax.faces.application.FacesMessage;
 
@@ -25,5 +26,10 @@ public class FacesUtil {
 	public static void addInfoMessage(String message) {
 		getCurrentInstance().addMessage(null, 
 				new FacesMessage(SEVERITY_INFO, message, message));
+	}
+	
+	public static void addWarnMessage(String message) {
+		getCurrentInstance().addMessage(null, 
+				new FacesMessage(SEVERITY_WARN, message, message));
 	}
 }

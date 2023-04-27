@@ -23,7 +23,6 @@ import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
-import com.rafael.pedidovenda.util.jsf.FacesUtil;
 import com.rafael.pedidovenda.validation.SKU;
 
 import lombok.Getter;
@@ -80,12 +79,17 @@ public class CadastroPedidoBean implements Serializable {
 	}
 
 	public void salvar() {
-		this.pedido = cadastroPedidoService.salvar(this.pedido);
-		addInfoMessage("Pedido salvo com sucesso!");
+		try {
+			pedido.removerItemVazio();
+			pedido = cadastroPedidoService.salvar(pedido);
+			addInfoMessage("Pedido salvo com sucesso!");
+		} finally {
+			pedido.adicionarItemVazio();
+		}
 	}
 	
 	public List<Cliente> completarCliente(String nome) {
-		return this.clientes.porNome(nome);
+		return clientes.porNome(nome);
 	}
 	
 	public List<Produto> completarProduto(String nome) {
@@ -97,12 +101,12 @@ public class CadastroPedidoBean implements Serializable {
 	}
 	
 	public boolean isEditando() {
-		return this.pedido.getId() != null;
+		return pedido.getId() != null;
 	}
 	
 	public void recalcularPedido() {
-		if(this.pedido != null) {
-			this.pedido.recalcularValorTotal();
+		if(pedido != null) {
+			pedido.recalcularValorTotal();
 		}
 	}
 	
@@ -149,7 +153,7 @@ public class CadastroPedidoBean implements Serializable {
 			if(linha == 0) {
 				item.setQuantidade(1);
 			} else {
-				this.pedido.getItens().remove(linha);
+				pedido.getItens().remove(linha);
 			}
 		}
 		
