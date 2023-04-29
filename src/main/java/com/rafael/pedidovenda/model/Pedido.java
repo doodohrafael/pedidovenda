@@ -193,9 +193,12 @@ public class Pedido implements Serializable {
 		return getValorTotal().compareTo(ZERO) < 0;
 	}
 	
+	@Transient
+	public boolean isEmitido() {
+		return StatusPedido.EMITIDO.equals(status);
+	}
+	
 	public List<ItemPedido> getItens() {
 		return itens;
 	}
-
-	
 }
