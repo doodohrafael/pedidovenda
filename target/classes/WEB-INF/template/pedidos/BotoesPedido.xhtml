@@ -8,11 +8,12 @@
 		<p:toolbarGroup>
 			<p:button value="Novo" outcome="/pedidos/CadastroPedido" />
 			<p:commandButton value="Salvar" action="#{cadastroPedidoBean.salvar}" 
-				update="@form" />
+				process="@form"	update="@form" />
 		</p:toolbarGroup>
 
 		<p:toolbarGroup align="right" styleClass="">
-			<p:commandButton value="Emitir" />
+			<p:commandButton value="Emitir" action="#{emissaoPedidoBean.emitirPedido}"
+				process="@form"	update="@form"  />
 			<p:commandButton value="Cancelar" />
 			<p:commandButton value="Enviar por e-mail" />
 
@@ -23,4 +24,3 @@
 	</p:toolbar>
 
 </ui:composition>
-

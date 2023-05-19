@@ -6,6 +6,8 @@ import static com.rafael.pedidovenda.util.jsf.FacesUtil.isNotPostback;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.event.Observes;
+import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -46,6 +48,8 @@ public class CadastroPedidoBean implements Serializable {
 	@Inject
 	private Usuarios usuarios;
 
+	@Produces 
+	@PedidoEdicao 
 	@Getter @Setter
 	private Pedido pedido;
 	
@@ -76,6 +80,10 @@ public class CadastroPedidoBean implements Serializable {
 	public void limparCampos() {
 		pedido = new Pedido();
 		pedido.setEnderecoEntrega(new EnderecoEntrega());
+	}
+	
+	public void pedidoAlterado(@Observes PedidoAlteradoEvent event) {
+		this.pedido = event.getPedido();
 	}
 
 	public void salvar() {
@@ -159,7 +167,7 @@ public class CadastroPedidoBean implements Serializable {
 		
 		pedido.recalcularValorTotal();
 	}
-
+	
 	@SKU
 	public String getSku() {
 		return sku;

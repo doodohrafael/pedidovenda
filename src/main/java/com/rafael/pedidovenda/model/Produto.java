@@ -18,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.rafael.pedidovenda.service.NegocioException;
 import com.rafael.pedidovenda.validation.SKU;
 
 import lombok.Data;
@@ -70,6 +71,17 @@ public class Produto implements Serializable {
 	@NotNull
 	public Categoria getCategoria() {
 		return categoria;
+	}
+	
+	public void baixarEstoque(Integer quantidade) {
+		int novaQuantidadeEstoque = quantidadeEstoque - quantidade;
+		
+		if (novaQuantidadeEstoque < 0) {
+			throw new NegocioException("Não há disponibilidade no estoque de "
+					+ quantidade + " itens do produto " + sku + ".");
+		}
+		
+		setQuantidadeEstoque(novaQuantidadeEstoque);
 	}
 	
 }

@@ -65,6 +65,5 @@ public class ItemPedido implements Serializable {
 	public boolean isEstoqueInsuficiente() {
 		return !isEstoqueSuficiente();
 	}
-
-
+	
 }
