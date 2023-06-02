@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.rafael.pedidovenda.model.Cliente;
-import com.rafael.pedidovenda.model.Pedido;
 
 public class Clientes implements Serializable {
 
@@ -28,8 +27,8 @@ public class Clientes implements Serializable {
 		return manager.find(Cliente.class, id);
 	}
 
-	public Pedido guardar(Pedido pedido) {
-		return manager.merge(pedido);
+	public Cliente guardar(Cliente cliente) {
+		return manager.merge(cliente);
 	}
 
 }

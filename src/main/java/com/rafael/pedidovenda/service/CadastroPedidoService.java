@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.rafael.pedidovenda.model.Pedido;
 import static com.rafael.pedidovenda.model.StatusPedido.ORCAMENTO;
-import com.rafael.pedidovenda.repository.Clientes;
+import com.rafael.pedidovenda.repository.Pedidos;
 import com.rafael.pedidovenda.util.jpa.Transactional;
 
 public class CadastroPedidoService implements Serializable {
@@ -15,7 +15,7 @@ public class CadastroPedidoService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private Clientes clientes;
+	private Pedidos pedidos;
 	
 	@Transactional
 	public Pedido salvar(Pedido pedido) {
@@ -34,7 +34,8 @@ public class CadastroPedidoService implements Serializable {
 			throw new NegocioException("Valor total do pedido não pode ser negativo.");
 		}
 		
-		pedido = clientes.guardar(pedido);
+		pedido = pedidos.guardar(pedido);
 		return pedido;
 	}
+	
 }
