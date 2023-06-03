@@ -5,7 +5,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:inputTextarea rows="10" style="width: 100%;" autoResize="true" 
-		value="#{cadastroPedidoBean.pedido.observacao}" />
+		value="#{cadastroPedidoBean.pedido.observacao}"
+		disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 	
 </ui:composition>
 
