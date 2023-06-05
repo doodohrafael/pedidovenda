@@ -223,10 +223,6 @@ public class Pedido implements Serializable {
 		return !isCancelavel();
 	}
 
-	public List<ItemPedido> getItens() {
-		return itens;
-	}
-
 	@Transient
 	private boolean isAlteravel() {
 		return isOrcamento();
@@ -236,5 +232,13 @@ public class Pedido implements Serializable {
 	public boolean isNaoAlteravel() {
 		return !isAlteravel();
 	}
+	
+	@Transient
+	public boolean isNaoEnviavelPorEmail() {
+		return isNovo() || isCancelado();
+	}
 
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
 }

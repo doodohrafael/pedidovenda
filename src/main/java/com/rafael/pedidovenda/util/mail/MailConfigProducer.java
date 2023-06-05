@@ -21,7 +21,7 @@ public class MailConfigProducer {
 		config.setServerHost(props.getProperty("mail.server.host"));
 		config.setServerPort(Integer.parseInt(props.getProperty("mail.server.port")));
 		config.setEnableSsl(Boolean.parseBoolean(props.getProperty("mail.enable.ssl")));
-		config.setAuth(Boolean.parseBoolean(props.getProperty("mail.enable.auth")));
+		config.setAuth(Boolean.parseBoolean(props.getProperty("mail.auth")));
 		config.setUsername(props.getProperty("mail.username"));
 		config.setPassword(props.getProperty("mail.password"));
 		return config;
