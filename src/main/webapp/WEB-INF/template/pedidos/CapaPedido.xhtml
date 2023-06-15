@@ -28,7 +28,7 @@
 		<p:outputLabel value="Cliente" for="cliente" />
 		<p:autoComplete id="cliente" size="40" dropdown="true" value="#{cadastroPedidoBean.pedido.cliente}" 
 			completeMethod="#{cadastroPedidoBean.completarCliente}" var="cliente" forceSelection="true" 
-			itemLabel="#{cliente.nome}" itemValue="#{cliente}" 
+			itemLabel="#{cliente.nome}" itemValue="#{cliente}" maxlength="100"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 
 		<p:outputLabel value="Forma de pagamento" for="formaPagamento" />

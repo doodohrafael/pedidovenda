@@ -1,11 +1,11 @@
 package com.rafael.pedidovenda.model;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,12 +32,16 @@ public class Usuario implements Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 
+	@NotBlank
 	@Column(nullable = false, length = 80)
 	private String nome;
 	
+	@Email
+	@NotBlank
 	@Column(nullable = false, unique = true, length = 255)
 	private String email;
 	
+	@NotBlank
 	@Column(nullable = false, length = 20)
 	private String senha;
 	

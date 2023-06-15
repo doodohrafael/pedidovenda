@@ -214,7 +214,7 @@ public class Pedido implements Serializable {
 	}
 	
 	@Transient
-	private boolean isCancelado() {
+	public boolean isCancelado() {
 		return StatusPedido.CANCELADO.equals(status);
 	}
 	

@@ -4,13 +4,13 @@ import lombok.Getter;
 
 public enum FormaPagamento {
 
+	PIX("Pix"),
 	DINHEIRO("Dinheiro"), 
 	CARTAO_CREDITO("Cartão de Crédito"), 
 	CARTAO_DEBITO("Cartão de Dédito"), 
-	CHEQUE("Cheque"), 
 	BOLETO_BANCARIO("Boleto Bancário"), 
 	DEPOSITO_BANCARIO("Depósito Bancário"),
-	PIX("Pix");
+	CHEQUE("Cheque");
 	
 	@Getter
 	private String descricao;

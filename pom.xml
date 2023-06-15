@@ -131,6 +131,22 @@
 		    <version>1.4.7</version>
 		    <scope>compile</scope>
 		</dependency>
+		
+		<!-- Para construir templates de emails -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Usamos para formatar números em templates -->
+		<dependency>
+			<groupId>velocity-tools</groupId>
+			<artifactId>velocity-tools-generic</artifactId>
+			<version>1.1</version>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
 	<build>

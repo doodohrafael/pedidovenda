@@ -1,0 +1,76 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui">
+	
+	
+	<ui:define name="titulo">Novo cliente</ui:define>
+	
+	<ui:define name="corpo">
+	<f:metadata>
+		<o:viewParam name="cliente" value="#{cadastroClienteBean.cliente}" />
+		<f:viewAction action="#{cadastroClienteBean.inicializar}" />
+	</f:metadata>
+		
+		<h:form>
+			<h1 class="titulo-h1">Novo cliente</h1>
+			
+			<p:messages closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			
+			<p:toolbar styleClass="toolbar">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/clientes/CadastroCliente" styleClass="btn-novo" />
+					<p:commandButton value="Salvar" styleClass="btn-salvar" update="@form" icon="pi pi-save" 
+						iconPos="right" action="#{cadastroClienteBean.salvar}" />
+				</p:toolbarGroup>
+				
+				<p:toolbarGroup>
+					<p:button value="Pesquisar" outcome="/clientes/PesquisaClientes" styleClass="btn-pesquisa" 
+						icon="pi pi-search" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:panelGrid columns="2" columnClasses="rotulo, campo" styleClass="pg">
+			
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="120" maxlength="100" value="#{cadastroClienteBean.cliente.nome}" />
+
+				<p:outputLabel value="Tipos" for="tipo" />
+				<p:selectOneRadio id="tipo" value="#{cadastroClienteBean.cliente.tipo}" required="true">
+					<f:selectItems value="#{cadastroClienteBean.tipos}" var="tipo"
+						itemValue="#{tipo}" itemLabel="#{tipo.descricao}" />
+					<p:ajax event="change" update="docReceitaFederal" listener="#{cadastroClienteBean.trocarMascara()}" />
+				</p:selectOneRadio>
+
+				<p:outputLabel for="docReceitaFederal" value="doc_receita_federal" />
+				<p:inputMask id="docReceitaFederal" value="#{cadastroClienteBean.cliente.documentoReceitaFederal}" 
+					maxlength="#{cadastroClienteBean.sizeCpfCnpj}" size="#{cadastroClienteBean.sizeCpfCnpj}" 
+					mask="#{cadastroClienteBean.mascaraCpfCnpj}" />
+				
+				<p:outputLabel for="telefone" value="Telefone" />
+				<p:inputMask id="telefone" size="15" maxlength="15" mask="(99) 99999-9999" 
+					value="#{cadastroClienteBean.cliente.telefone}" />
+				
+				<p:outputLabel for="email" value="E-mail" />
+				<p:inputText id="email" size="100" maxlength="255" value="#{cadastroClienteBean.cliente.email}" />
+				
+			</p:panelGrid>
+			
+			<h2 class="titulo-h2">Endereços</h2>
+			
+			<p:toolbar styleClass="toolbar">
+				<p:toolbarGroup>
+					<p:button value="Novo endereço" styleClass="btn-novo" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>

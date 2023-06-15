@@ -63,7 +63,7 @@ public class Produto implements Serializable {
 		return quantidadeEstoque;
 	}
 	
-	@NotNull(message = "é obrigatório")
+	@NotNull
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
@@ -78,7 +78,7 @@ public class Produto implements Serializable {
 		
 		if (novaQuantidadeEstoque < 0) {
 			throw new NegocioException("Não há disponibilidade no estoque de "
-					+ quantidade + " itens do produto " + sku + ".");
+					+ quantidade + " itens do produto " + sku.toUpperCase() + ".");
 		}
 		
 		setQuantidadeEstoque(novaQuantidadeEstoque);

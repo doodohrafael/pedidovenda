@@ -11,18 +11,16 @@ header {
 	padding: 5px 0px;
 	margin-bottom: 20px;
 	height: 40px;
-	
-	background-color: #545454;
+	background-color: #1f2d40;
 	color: #fff;
-	
-	box-shadow: 0px 2px 2px #ccc;
+	box-shadow: 0px 2px 2px #1f2d40;
 }
 
 #tam-logo-header {
 	width: 170px;
 }
 
-header > div {
+header>div {
 	margin-left: 8px;
 }
 
@@ -42,9 +40,9 @@ footer {
 }
 
 .grid-login {
-	background-color: #f2f2f2;
+	background-color: black;
 	border-radius: 8px;
-	border: 1px solid #ccc;
+	border: 1px solid black;
 	margin-top: 8px;
 	padding: 10px;
 }
@@ -56,19 +54,22 @@ h1 {
 	margin: 0px;
 }
 
-#painel {
-	width: 100%; 
-	margin-top: 20px;
+.painel {
+	width: 100% !important;
+	margin-top: 20px !important;
 }
 
 #botao-novo {
-	margin-right: 10px; 
+	margin-right: 10px;
 }
 
 .rotulo {
-	width: 100px;
+	width: 100px !important;
 }
 
+.rotulo-cliente {
+	width: 180px !important;
+}
 
 .ajax-status {
 	position: fixed;
@@ -91,12 +92,15 @@ h1 {
 }
 
 /* Cor texto menu hover */
-body .ui-menu .ui-menu-list .ui-menuitem.ui-menuitem-active > .ui-menuitem-link .ui-menuitem-text {
-	color: #2196F3 !important;
+body .ui-menu .ui-menu-list .ui-menuitem.ui-menuitem-active>.ui-menuitem-link .ui-menuitem-text
+	{
+	/* color: #2196F3 !important; */
+	color: tomato !important;
 }
 
 /* Cor texto menu */
-body .ui-menu.ui-menubar > .ui-menu-list > .ui-menuitem > .ui-menuitem-link > span {
+body .ui-menu.ui-menubar>.ui-menu-list>.ui-menuitem>.ui-menuitem-link>span
+	{
 	color: #2196F3 !important;
 	font-weight: bold !important;
 }
@@ -106,4 +110,112 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 	padding: 0.35rem 2rem;
 }
 
+.btn-salvar {
+	background-color: tomato !important;
+	border-color: tomato !important;
+	color: white !important;
+}
 
+.btn-cancelar {
+	background-color: crimson !important;
+	border-color: crimson !important;
+	color: white !important;
+}
+
+.btn-novo {
+	background-color: dodgerblue !important;
+	border-color: dodgerblue !important;
+	color: white !important;
+}
+
+.btn-novo:hover {
+	background-color: rgb(59, 188, 231) !important;
+	border-color: rgb(59, 188, 231)  !important;
+}
+
+.btn-emitir {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+}
+
+.btn-email {
+	background-color: blueviolet !important;
+	border-color: blueviolet !important;
+	color: white !important;
+}
+
+.btn-pesquisa {
+	background-color: gold !important;
+	border-color: gold !important;
+	color: black !important;
+}
+
+.btn-excluir {
+	background-color: crimson !important;
+	border-color: crimson !important;
+	color: white !important;
+}
+
+.btn-editar {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+	margin-right: 10px !important;
+}
+
+.btn-orcamento {
+	background-color: gold !important;
+	border-color: gold !important;
+	color: white !important;
+}
+
+.btn-nao {
+	background-color: dodgerblue !important;
+	border-color: dodgerblue !important;
+	color: white !important;
+}
+
+.txt-cancelar {
+	color: crimson !important;
+}
+
+.txt-emitido {
+	color: limegreen !important;
+	color: limegreen !important;
+}
+
+.txt-orcamento {
+	color: gold !important;
+	color: gold !important;
+}
+
+.titulo-h1 {
+	font-size: 35px !important;
+	font-weight: bold !important;
+	color: tomato !important;
+}
+
+.toolbar {
+	margin-top: 20px;
+}
+
+.pg {
+	width: 100% !important;
+	margin-top: 20px !important;
+}
+
+.tabela {
+	margin-top: 20px;
+}
+
+.editar-excluir {
+	width: 200px; 
+	text-align: center;
+}
+
+.titulo-h2 {
+	font-size: 35px !important;
+	font-weight: bold !important;
+	color: tomato !important;
+}

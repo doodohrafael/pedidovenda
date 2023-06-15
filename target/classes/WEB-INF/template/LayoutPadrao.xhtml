@@ -26,7 +26,7 @@
 	<header>
 		<div style="float: left;">
 			<h:link outcome="/Home">
-				<h:graphicImage id="tam-logo-header" library="images" name="logo-algaworks.png" />
+				<h:graphicImage id="tam-logo-header" library="images" name="logo-reboot.png" />
 			</h:link>
 		</div>
 		
@@ -38,8 +38,8 @@
 			<h:form style="display: inline-block;">
 				<p:menubar styleClass="menu-sistema">
 					<p:submenu label="Cadastros">
-						<p:menuitem value="Clientes" />
-						<p:menuitem value="Usuários" />
+						<p:menuitem value="Clientes" outcome="/clientes/PesquisaClientes" />
+						<p:menuitem value="Usuários" outcome="/usuarios/PesquisaUsuarios" />
 						<p:separator />
 						<p:menuitem value="Categorias" />
 						<p:menuitem value="Produtos" outcome="/produtos/PesquisaProdutos" />
@@ -49,7 +49,7 @@
 						<p:menuitem value="Pesquisa" outcome="/pedidos/PesquisaPedidos" />
 					</p:submenu>
 				
-					<p:menuitem value="Sair" />
+					<p:menuitem value="Sair" icon="pi pi-power-off" />
 				</p:menubar>
 			</h:form>
 		</div>
@@ -62,8 +62,8 @@
 	<p:separator style="margin-top: 20px;" />
 	
 	<footer>
-		Curso Online de Sistemas Comerciais Java EE com CDI, JPA e Primefaces.
-		<a href="https://www.algaworks.com/" target="_blank">www.algaworks.com</a>
+		Sistema Comercial de Pedido e Venda feito por 
+		<a href="https://www.github.com/doodohrafael" target="_blank">Douglas Rafael</a>
 	</footer>
 	
 	<script>

@@ -15,6 +15,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,20 +33,28 @@ public class Cliente implements Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@NotBlank
 	@Column(nullable = false, length = 100)
 	private String nome;
 	
+	@Email
+	@NotBlank
 	@Column(nullable = false, length = 255)
 	private String email;
 	
-	@Column(name = "doc_receita_federal", nullable = false, length = 14)
+	@NotBlank
+	@Column(name = "doc_receita_federal", unique = true, nullable = false, length = 18)
 	private String documentoReceitaFederal;
 	
 	@Enumerated(STRING)
 	@Column(nullable = false, length = 10)
 	private TipoPessoa tipo;
 	
+	@NotBlank
+	@Column(length = 15)
+	private String telefone;
+	
 	@OneToMany(mappedBy = "cliente", cascade = ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
-
+	
 }

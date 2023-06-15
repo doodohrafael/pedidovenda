@@ -1,5 +1,7 @@
 package com.rafael.pedidovenda.controller;
 
+import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +12,6 @@ import javax.inject.Named;
 import com.rafael.pedidovenda.model.Produto;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.filter.ProdutoFilter;
-import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +31,7 @@ public class PesquisaProdutosBean implements Serializable {
 	@Getter
 	private ProdutoFilter filtro;
 	
-	@Getter @Setter 
+	@Getter @Setter
 	private Produto produtoSelecionado;
 
 	public PesquisaProdutosBean() {

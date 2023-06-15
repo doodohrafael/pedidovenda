@@ -15,7 +15,9 @@
 				type="preRenderView" />
 		</f:metadata>
 		<h:form id="frmCadastro">
-			<h1>#{cadastroPedidoBean.editando ? 'Edição de pedido' : 'Novo pedido'}</h1>
+			<h1 class="titulo-h1">
+				#{cadastroPedidoBean.editando ? 'Edição de pedido' : 'Novo pedido'}
+			</h1>
 			
 			<p:messages closable="true">
 				<p:autoUpdate />

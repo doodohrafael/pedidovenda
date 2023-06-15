@@ -9,42 +9,42 @@
 
 	<ui:define name="corpo">
 		<h:form>
-			<h1>Pesquisa Pedidos</h1>
+			<h1 class="titulo-h1">Pesquisa Pedidos</h1>
 			<p:messages>
 				<p:autoUpdate />
 			</p:messages>
 			<p:toolbar style="margin-top: 20px;">
 				<p:toolbarGroup>
 					<p:commandButton value="Pesquisar" action="#{pesquisaPedidosBean.pesquisar}" 
-						update="@form" />
+						update="@form" styleClass="btn-pesquisa" icon="pi pi-search"  />
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
-					<p:button value="Novo" outcome="/pedidos/CadastroPedido"/>
+					<p:button styleClass="btn-novo" value="Novo" 
+						outcome="/pedidos/CadastroPedido" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px;"
-				columnClasses="rotulo, campo">
+			<p:panelGrid styleClass="painel" columns="2" columnClasses="rotulo, campo">
 				
 				<p:outputLabel value="Número" />
 				<h:panelGroup>
-					<p:inputText size="10" value="#{pesquisaPedidosBean.filtro.numeroDe}" />
+					<p:inputText size="7" value="#{pesquisaPedidosBean.filtro.numeroDe}" maxlength="10" />
 					a
-					<p:inputText size="10" value="#{pesquisaPedidosBean.filtro.numeroAte}" />
+					<p:inputText size="7" value="#{pesquisaPedidosBean.filtro.numeroAte}" maxlength="10" />
 				</h:panelGroup>
 
 				<p:outputLabel value="Data de criação" />
 				<h:panelGroup>
-					<p:calendar size="10" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoDe}" />
+					<p:calendar size="7" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoDe}" />
 					a
-					<p:calendar size="10" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoAte}" />
+					<p:calendar size="7" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoAte}" />
 				</h:panelGroup>
 				
 				<p:outputLabel value="Vendedor" />
-				<p:inputText size="40" value="#{pesquisaPedidosBean.filtro.nomeVendedor}" />
+				<p:inputText size="80" value="#{pesquisaPedidosBean.filtro.nomeVendedor}" maxlength="80" />
 				
 				<p:outputLabel value="Cliente" />
-				<p:inputText size="40" value="#{pesquisaPedidosBean.filtro.nomeCliente}" />
+				<p:inputText size="100" value="#{pesquisaPedidosBean.filtro.nomeCliente}" maxlength="100" />
 				
 				<p:outputLabel value="Status" />
 				<p:selectManyCheckbox value="#{pesquisaPedidosBean.filtro.statuses}">
@@ -55,7 +55,7 @@
 			</p:panelGrid>
 
 			<p:dataTable id="pedidosTable" value="#{pesquisaPedidosBean.pedidosFiltrados}" 
-				var="pedido" style="margin-top: 20px;" emptyMessage="Nenhum pedido encontrado."
+				var="pedido" styleClass="tabela" emptyMessage="Nenhum pedido encontrado."
 				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 
 				<p:column headerText="Número" style="text-align: center; width: 100px;">
@@ -83,12 +83,18 @@
 				</p:column>
 				
 				<p:column headerText="Status" style="width: 100px;">
-					<h:outputLabel value="#{pedido.status.descricao}" />
+					<h:outputLabel value="#{pedido.status.descricao}" 
+						styleClass="#{pedido.cancelado ? 'txt-cancelar' : ''}
+								#{pedido.emitido ? 'txt-emitido' : ''}
+								#{pedido.orcamento ? 'txt-orcamento' : ''}" />
 				</p:column>
 
 				<p:column style="text-align: center; width: 50px;">
-					<p:button icon="pi pi-pencil" title="Editar" 
-						outcome="/pedidos/CadastroPedido" >
+					<p:button icon="#{pedido.orcamento ? 'pi pi-pencil' : 'pi pi-eye'}" 
+						title="#{pedido.orcamento ? 'Editar' : 'Ver'}" 
+						outcome="/pedidos/CadastroPedido" 
+						styleClass="#{pedido.cancelado ? 'btn-cancelar' : 'btn-editar'}
+									#{pedido.orcamento ? 'btn-orcamento' : ''}" >
 						<f:param name="pedido" value="#{pedido.id}" />
 					</p:button>
 				</p:column>
