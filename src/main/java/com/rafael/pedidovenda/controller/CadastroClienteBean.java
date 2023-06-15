@@ -59,6 +59,10 @@ public class CadastroClienteBean implements Serializable {
 			sizeCpfCnpj = 18;
 		}
 	}
+	
+	public boolean isEditando() {
+		return cliente.getId() != null;
+	}
 
 	public TipoPessoa[] getTipos() {
 		return TipoPessoa.values();
