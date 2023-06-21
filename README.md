@@ -1,10 +1,10 @@
 
 # PedidoVenda
 
-Sistema Comercial de Pedido de Venda feito para dar suporte total e preciso ao gerenciamento de estabelecimentos de diversos setores.
+Sistema Comercial de Pedido e Venda feito para dar suporte total e preciso ao gerenciamento de estabelecimentos de diversos setores.
 
 
-## Stack utilizada
+## Stacks utilizadas
 
 **Front-end:** JSF e PrimeFaces.
 

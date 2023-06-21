@@ -53,7 +53,13 @@
 			<artifactId>weld-servlet-core</artifactId>
 			<version>3.1.9.Final</version>
 		</dependency>
-
+		
+		 <!--<dependency>
+	        <groupId>jakarta.servlet</groupId>
+	        <artifactId>jakarta.servlet-api</artifactId>
+	        <version>6.0.0</version>
+	    </dependency>-->
+	    
 		<!-- Para manipular logs -->
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -132,22 +138,63 @@
 		    <scope>compile</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-email</artifactId>
+		    <version>1.5</version>
+		</dependency>
+		
 		<!-- Para construir templates de emails -->
 		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
-			<scope>compile</scope>
+		    <groupId>org.apache.velocity</groupId>
+		    <artifactId>velocity-engine-core</artifactId>
+		    <version>2.3</version>
 		</dependency>
 		
 		<!-- Usamos para formatar números em templates -->
 		<dependency>
-			<groupId>velocity-tools</groupId>
-			<artifactId>velocity-tools-generic</artifactId>
-			<version>1.1</version>
-			<scope>compile</scope>
+		    <groupId>org.apache.velocity.tools</groupId>
+		    <artifactId>velocity-tools-generic</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		
+		<!-- Spring Security para Autenticação e Autorização -->
+		<!--<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>6.1.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>6.1.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>6.1.0</version>
+		</dependency>-->
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>3.1.4.RELEASE</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>3.1.4.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>3.1.4.RELEASE</version>
+		</dependency>
+			
 	</dependencies>
 	<build>
 		<finalName>PedidoVenda</finalName>

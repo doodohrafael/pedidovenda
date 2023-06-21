@@ -5,10 +5,13 @@ import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Locale;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.velocity.tools.generic.NumberTool;
 
 import com.outjected.email.api.MailMessage;
 import com.outjected.email.impl.templating.velocity.VelocityTemplate;
@@ -28,22 +31,27 @@ public class EnvioPedidoEmailBean implements Serializable {
 	@PedidoEdicao
 	private Pedido pedido;
 	
+	public static final String PATH = "C:/Users/Pinkman/eclipse-workspaces/eclipse-workspace-curso-sistema-comercial/"
+			+ "PedidoVenda/src/main/resources/emails/pedido.template";
+	
 	public void enviarPedido() throws IOException {
+		
 		MailMessage message = mailer.novaMensagem();
 		
-		String uri = "//emails//pedido.template";
-		
-		message.to(pedido.getCliente().getEmail())
-			.subject("Pedido " + pedido.getId())
-			.bodyHtml(new VelocityTemplate(new File(uri)))
-			.put("pedido", pedido)
-			.send();
-		
-//			.bodyHtml(new VelocityTemplate("/emails/pedido.template"))
-//			.bodyHtml(new VelocityTemplate(getClass().getResourceAsStream("/emails/pedido.template")))
-			// 06:00
+		if (pedido != null && pedido.getItens() != null && !pedido.getItens().isEmpty()) {
+			
+			File file = new File(PATH);
+			
+			message.to(pedido.getCliente().getEmail())
+				.subject("Pedido " + pedido.getId())
+				.bodyHtml(new VelocityTemplate(file))
+				.put("pedido", pedido)
+				.put("numberTool", new NumberTool())
+				.put("locale", new Locale("pt", "BR"))
+				.send();
 		
 		addInfoMessage("Pedido enviado por e-mail com sucesso!");
+		}
 	}
 
 }

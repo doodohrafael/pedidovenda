@@ -50,7 +50,7 @@
 				<p:outputLabel for="docReceitaFederal" value="doc_receita_federal" />
 				<p:inputMask id="docReceitaFederal" value="#{cadastroClienteBean.cliente.documentoReceitaFederal}" 
 					maxlength="#{cadastroClienteBean.sizeCpfCnpj}" size="#{cadastroClienteBean.sizeCpfCnpj}" 
-					mask="#{cadastroClienteBean.mascaraCpfCnpj}" />
+					mask="#{cadastroClienteBean.mascaraCpfCnpj}" required="true" />
 				
 				<p:outputLabel for="telefone" value="Telefone" />
 				<p:inputMask id="telefone" size="15" maxlength="15" mask="(99) 99999-9999" 

@@ -36,6 +36,8 @@ public class CadastroClienteBean implements Serializable {
 	public void inicializar() {
 		if (cliente == null) {
 			limparCampos();
+		} else {
+			trocarMascara();
 		}
 	}
 	
@@ -50,13 +52,15 @@ public class CadastroClienteBean implements Serializable {
 	}
 	
 	public void trocarMascara() {
-		if (cliente.getTipo().equals(TipoPessoa.FISICA)) {
-			mascaraCpfCnpj = "999.999.999-99";
-			sizeCpfCnpj = 14;
-		}
-		if (cliente.getTipo().equals(TipoPessoa.JURIDICA)) {
-			mascaraCpfCnpj = "99.999.999/9999-99";
-			sizeCpfCnpj = 18;
+		if (cliente.getTipo() != null) {
+			if (cliente.getTipo().equals(TipoPessoa.FISICA)) {
+				mascaraCpfCnpj = "999.999.999-99";
+				sizeCpfCnpj = 14;
+			}
+			if (cliente.getTipo().equals(TipoPessoa.JURIDICA)) {
+				mascaraCpfCnpj = "99.999.999/9999-99";
+				sizeCpfCnpj = 18;
+			}
 		}
 	}
 	

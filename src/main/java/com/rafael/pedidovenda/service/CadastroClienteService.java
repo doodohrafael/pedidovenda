@@ -19,25 +19,22 @@ public class CadastroClienteService implements Serializable {
 	
 	@Transactional
 	public Cliente salvar(Cliente cliente) {
-		
-		if(cliente.getId() == null) {
-			verificarPorNome(cliente);
-			
-			verificarPorDocumentoReceitaFederal(cliente);
-			
-			verificarPorTelefone(cliente);
-			
-			verificarPorEmail(cliente);
-		}
-		
+
+		verificarPorNome(cliente);
+
+		verificarPorDocumentoReceitaFederal(cliente);
+
+		verificarPorTelefone(cliente);
+
+		verificarPorEmail(cliente);
+
 		return clientes.guardar(cliente);
 	}
 
 	private void verificarPorEmail(Cliente cliente) {
 		clienteExistente = clientes.porEmail(cliente.getEmail());
 		
-		if (clienteExistente != null 
-				&& clienteExistente.getEmail().equals(cliente.getEmail())) {
+		if (clienteExistente != null && !clienteExistente.equals(cliente)) {
 			throw new NegocioException("Já existe um cliente com o email " 
 				+ cliente.getEmail() + " informado");
 		}
@@ -46,8 +43,7 @@ public class CadastroClienteService implements Serializable {
 	private void verificarPorNome(Cliente cliente) {
 		clienteExistente = clientes.buscarPorNome(cliente.getNome());
 
-		if (clienteExistente != null 
-				&& clienteExistente.getNome().equals(cliente.getNome())) {
+		if (clienteExistente != null && !clienteExistente.equals(cliente)) {
 			throw new NegocioException("Já existe um cliente com o nome " 
 				+ cliente.getNome() + " informado.");
 		}
@@ -57,8 +53,7 @@ public class CadastroClienteService implements Serializable {
 		clienteExistente = clientes
 				.porDocumentoReceitaFederal(cliente.getDocumentoReceitaFederal());
 		
-		if (clienteExistente != null && clienteExistente.getDocumentoReceitaFederal()
-				.equals(cliente.getDocumentoReceitaFederal())) {
+		if (clienteExistente != null && !clienteExistente.equals(cliente)) {
 			throw new NegocioException(
 					"Já existe um cliente com o documento " + cliente.getDocumentoReceitaFederal() 
 					+ " informado.");
@@ -68,8 +63,7 @@ public class CadastroClienteService implements Serializable {
 	private void verificarPorTelefone(Cliente cliente) {
 		clienteExistente = clientes.porTelefone(cliente.getTelefone());
 				
-		if (clienteExistente != null 
-				&& clienteExistente.getTelefone().equals(cliente.getTelefone())) {
+		if (clienteExistente != null && !clienteExistente.equals(cliente)) {
 			throw new NegocioException("Já existe um cliente com o telefone " 
 						+ cliente.getTelefone() + " informado");
 		}
