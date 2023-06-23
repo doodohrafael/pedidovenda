@@ -46,11 +46,12 @@ public class Usuarios implements Serializable {
 	
 	public Usuario porEmail(String email) {
 		try {
-			jpql = "from Usuario where email like :email";
+			jpql = "from Usuario where lower(email) = :email";
 			return manager.createQuery(jpql, Usuario.class)
-					.setParameter("email", "%" + email + "%")
+					.setParameter("email", email.toLowerCase())
 					.getSingleResult();
 		} catch (NoResultException e) {
+			// Nenhum usuário encontrado com o e-mail informado.
 			return null;
 		}
 	}

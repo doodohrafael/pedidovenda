@@ -96,15 +96,15 @@ public class Clientes implements Serializable {
 	
 	public Cliente porEmail(String email) {
 		try {
-			jpql = "from Cliente where email like :email";
+			jpql = "from Cliente where lower(email) = :email";
 			cliente = manager.createQuery(jpql, Cliente.class)
 					.setParameter("email", email)
 					.getSingleResult();
 			
 			return cliente;
 		} catch (NoResultException e) {
-			return null;
 		}
+		return cliente;
 	}
 
 	public List<Cliente> filtrados(ClienteFilter filtro) {

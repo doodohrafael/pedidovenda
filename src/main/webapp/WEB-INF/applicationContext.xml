@@ -6,21 +6,22 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
+	<beans:bean id="appUserDetailsService" class="com.rafael.pedidovenda.security.AppUserDetailsService" />
+
 	<http pattern="/javax.faces.resource/**" security="none" />
 
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/Home.xhtml" access="isAuthenticated()" />
 		<intercept-url pattern="/pedidos/**" access="hasAnyRole('VENDEDORES', 'AUXILIARES', 'ADMINISTRADORES')" />
-		<intercept-url pattern="/produtos/**" access="hasAnyRole('ADMINISTRADORES')" />
+		<intercept-url pattern="/produtos/**" access="hasAnyRole('ADMINISTRADORES','VENDEDORES')" />
+		<intercept-url pattern="/usuarios/**" access="hasAnyRole('ADMINISTRADORES','VENDEDORES')" />
+		<intercept-url pattern="/clientes/**" access="hasAnyRole('ADMINISTRADORES','VENDEDORES')" />
 		<intercept-url pattern="/**" access="denyAll" />
 	</http>
 	
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="rafael" password="rafael123" authorities="VENDEDORES" />
-				<user name="alice" password="alice123" authorities="ADMINISTRADORES" />
-			</user-service>
+		<authentication-provider user-service-ref="appUserDetailsService">
+			<!-- <password-encoder hash="md5" /> -->
 		</authentication-provider>
 	</authentication-manager>
 
