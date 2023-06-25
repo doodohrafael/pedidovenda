@@ -54,12 +54,6 @@
 			<version>3.1.9.Final</version>
 		</dependency>
 		
-		 <!--<dependency>
-	        <groupId>jakarta.servlet</groupId>
-	        <artifactId>jakarta.servlet-api</artifactId>
-	        <version>6.0.0</version>
-	    </dependency>-->
-	    
 		<!-- Para manipular logs -->
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -159,24 +153,6 @@
 		</dependency>
 		
 		<!-- Spring Security para Autenticação e Autorização -->
-		<!--<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>6.1.0</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
-		    <version>6.1.0</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>6.1.0</version>
-		</dependency>-->
-		
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
@@ -193,6 +169,13 @@
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
 		    <version>3.1.4.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
 		</dependency>
 			
 	</dependencies>

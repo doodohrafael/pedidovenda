@@ -40,11 +40,12 @@ footer {
 }
 
 .grid-login {
-	background-color: black;
-	border-radius: 8px;
+	/* background-color: black;
+	border-radius: 8px; 
 	border: 1px solid black;
 	margin-top: 8px;
 	padding: 10px;
+	*/
 }
 
 h1 {

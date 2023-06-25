@@ -2,6 +2,9 @@ package com.rafael.pedidovenda.security;
 
 import javax.enterprise.context.RequestScoped;
 import static javax.faces.context.FacesContext.getCurrentInstance;
+
+import java.io.Serializable;
+
 import javax.inject.Named;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
