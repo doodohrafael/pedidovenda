@@ -27,7 +27,6 @@
 
 	<http pattern="/Login.xhtml" security="none" />
 	<http pattern="/Erro.xhtml" security="none" />
-	<http pattern="/AcessoNegado.xhtml" security="none" />
 	<http pattern="/javax.faces.resource/**" security="none" />
 
 	<http auto-config="false" use-expressions="true">
@@ -35,6 +34,7 @@
 		<custom-filter ref="exceptionTranslationFilter" before="FILTER_SECURITY_INTERCEPTOR" />
 	
 		<intercept-url pattern="/Home.xhtml" access="isAuthenticated()" />
+		<intercept-url pattern="/AcessoNegado.xhtml" access="isAuthenticated()" />
 		<intercept-url pattern="/pedidos/**" access="hasAnyRole('VENDEDORES', 'AUXILIARES', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/produtos/**" access="hasAnyRole('ADMINISTRADORES')" />
 		<intercept-url pattern="/usuarios/**" access="hasAnyRole('ADMINISTRADORES')" />
