@@ -4,12 +4,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
+	<f:metadata>
+		<f:event listener="#{graficoPedidosCriadosBean.preRender}" type="preRenderView"></f:event>
+	</f:metadata>
 
 	<ui:define name="titulo">Dashboard</ui:define>
 
 	<ui:define name="corpo">
-		<br/><br/><br/>Seja bem vindo!<br/><br/><br/>
-
+	
+		<p:lineChart model="#{graficoPedidosCriadosBean.model}" style="width: 100%; height: 500px !important; 
+			margin-top: 30px !important;" />
+		 
 	</ui:define>
 
 </ui:composition>

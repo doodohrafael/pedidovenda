@@ -165,6 +165,12 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 	margin-right: 10px !important;
 }
 
+.btn-editar-dt {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+}
+
 .btn-orcamento {
 	background-color: gold !important;
 	border-color: gold !important;

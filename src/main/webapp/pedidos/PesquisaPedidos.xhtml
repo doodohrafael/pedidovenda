@@ -93,7 +93,7 @@
 					<p:button icon="#{pedido.orcamento ? 'pi pi-pencil' : 'pi pi-eye'}" 
 						title="#{pedido.orcamento ? 'Editar' : 'Ver'}" 
 						outcome="/pedidos/CadastroPedido" 
-						styleClass="#{pedido.cancelado ? 'btn-cancelar' : 'btn-editar'}
+						styleClass="#{pedido.cancelado ? 'btn-cancelar' : 'btn-editar-dt'}
 									#{pedido.orcamento ? 'btn-orcamento' : ''}" >
 						<f:param name="pedido" value="#{pedido.id}" />
 					</p:button>
