@@ -1,20 +1,25 @@
 package com.rafael.pedidovenda.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.model.charts.ChartData;
-import org.primefaces.model.charts.line.LineChartDataSet;
-import org.primefaces.model.charts.line.LineChartModel;
-import org.primefaces.model.charts.line.LineChartOptions;
-import org.primefaces.model.charts.optionconfig.elements.Elements;
-import org.primefaces.model.charts.optionconfig.elements.ElementsLine;
-import org.primefaces.model.charts.optionconfig.legend.Legend;
-import org.primefaces.model.charts.optionconfig.title.Title;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.CategoryAxis;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LineChartModel;
+
+import com.rafael.pedidovenda.model.Usuario;
+import com.rafael.pedidovenda.repository.Pedidos;
+import com.rafael.pedidovenda.security.UsuarioLogado;
+import com.rafael.pedidovenda.security.UsuarioSistema;
 
 import lombok.Getter;
 
@@ -22,71 +27,44 @@ import lombok.Getter;
 @RequestScoped
 public class GraficoPedidosCriadosBean implements Serializable {
 
+	private static final int DIAS_PEDIDOS_CRIADOS = 15;
+
 	private static final long serialVersionUID = 1L;
+	
+	private DateFormat formatadorDeData = new SimpleDateFormat("dd/MM");
+	
+	@Inject
+	private Pedidos pedidos;
+	
+	@Inject
+	@UsuarioLogado
+	private UsuarioSistema usuarioLogado;
 	
 	@Getter
 	private LineChartModel model;
 	
 	public void preRender() {
-		createLineModel();
+		model = new LineChartModel();
+		model.setTitle("Pedidos Criados dos últimos 15 dias");
+		model.setLegendPosition("e");
+		model.setAnimate(true);
+		
+		model.getAxes().put(AxisType.X, new CategoryAxis());
+		
+		adicionarSeries("Todos os pedidos", null);
+		adicionarSeries("Meus pedidos", usuarioLogado.getUsuario());
 	}
-
-	public void createLineModel() {
-        model = new LineChartModel();
-        ChartData data = new ChartData();
-        
-        LineChartDataSet dataSet = new LineChartDataSet();
-        List<Object> values = new ArrayList<>();
-        values.add(Math.random() * 1000);
-        values.add(Math.random() * 1000);
-        values.add(Math.random() * 1000);
-        values.add(Math.random() * 1000);
-        values.add(Math.random() * 1000);
-        
-        dataSet.setData(values);
-        dataSet.setFill(false);
-        dataSet.setLabel("Todos os pedidos");
-        dataSet.setBorderColor("rgb(75, 192, 192)");
-        dataSet.setBackgroundColor("rgb(75, 192, 192)");
-
-        LineChartDataSet dataSet2 = new LineChartDataSet();
-        List<Object> values2 = new ArrayList<>();
-        values2.add(Math.random() * 1000);
-        values2.add(Math.random() * 1000);
-        values2.add(Math.random() * 1000);
-        values2.add(Math.random() * 1000);
-        values2.add(Math.random() * 1000);
-        
-        dataSet2.setData(values2);
-        dataSet2.setFill(false);
-        dataSet2.setLabel("Meus pedidos");
-        dataSet2.setBorderColor("rgb(246, 184, 0)");
-        dataSet2.setBackgroundColor("rgb(246, 184, 0)");
-        
-        data.addChartDataSet(dataSet);
-        data.addChartDataSet(dataSet2);
-
-        List<String> labels = new ArrayList<>();
-        labels.add("1");
-        labels.add("2");
-        labels.add("3");
-        labels.add("4");
-        labels.add("5");
-        data.setLabels(labels);
-
-        LineChartOptions options = new LineChartOptions();
-        Title title = new Title();
-        title.setDisplay(true);
-        title.setText("Pedidos criados");
-        options.setTitle(title);
-        
-        Legend legend = new Legend();
-        legend.setDisplay(true);
-        legend.setPosition("right");
-        options.setLegend(legend);
-        
-        model.setOptions(options);
-        model.setData(data);
-    }
+	
+	private void adicionarSeries(String rotulo, Usuario criadoPor) {
+		Map<Date, BigDecimal> valoresPorData = pedidos.valoresTotaisPorData(DIAS_PEDIDOS_CRIADOS, criadoPor);
+		
+		ChartSeries series = new ChartSeries(rotulo);
+		
+		for (Date data : valoresPorData.keySet()) {
+			series.set(formatadorDeData.format(data), valoresPorData.get(data));
+		}
+		
+		model.addSeries(series);
+	}
 
 }
