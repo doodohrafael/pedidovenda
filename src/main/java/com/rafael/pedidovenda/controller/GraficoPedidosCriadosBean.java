@@ -45,9 +45,10 @@ public class GraficoPedidosCriadosBean implements Serializable {
 	
 	public void preRender() {
 		model = new LineChartModel();
-		model.setTitle("Pedidos Criados dos últimos 15 dias");
+		model.setTitle("Pedidos criados dos últimos 15 dias");
 		model.setLegendPosition("e");
 		model.setAnimate(true);
+		model.setDatatipFormat("R$%.0s%s");
 		
 		model.getAxes().put(AxisType.X, new CategoryAxis());
 		
