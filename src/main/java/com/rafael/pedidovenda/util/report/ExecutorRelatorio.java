@@ -18,10 +18,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 /*
-* Responsável por executar o relatório e exportar para o formato PDF.
+* Responsável por executar e exportar o relatório para o formato PDF.
 */
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({ "deprecation", "rawtypes" })
 public class ExecutorRelatorio implements Work {
 	
 	private String caminhoRelatorio;
@@ -41,14 +41,13 @@ public class ExecutorRelatorio implements Work {
 		this.parametros.put(JRParameter.REPORT_LOCALE, new Locale("pt", "BR"));
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void execute(Connection connection) throws SQLException {
 		try {
 			InputStream relatorioStream = this.getClass().getResourceAsStream(caminhoRelatorio);
 			
 			JasperPrint print = JasperFillManager.fillReport(relatorioStream, parametros, connection);
-			relatorioGerado = print.getPages().size() > 0;
+			relatorioGerado = !print.getPages().isEmpty();
 			
 			if (relatorioGerado) {
 				JRExporter exportador = new JRPdfExporter();

@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.rafael.pedidovenda.model.Cliente;
+import static com.rafael.pedidovenda.model.TipoPessoa.FISICA;
+import static com.rafael.pedidovenda.model.TipoPessoa.JURIDICA;
 import com.rafael.pedidovenda.model.TipoPessoa;
 import com.rafael.pedidovenda.service.CadastroClienteService;
 
@@ -53,11 +55,11 @@ public class CadastroClienteBean implements Serializable {
 	
 	public void trocarMascara() {
 		if (cliente.getTipo() != null) {
-			if (cliente.getTipo().equals(TipoPessoa.FISICA)) {
+			if (cliente.getTipo().equals(FISICA)) {
 				mascaraCpfCnpj = "999.999.999-99";
 				sizeCpfCnpj = 14;
 			}
-			if (cliente.getTipo().equals(TipoPessoa.JURIDICA)) {
+			if (cliente.getTipo().equals(JURIDICA)) {
 				mascaraCpfCnpj = "99.999.999/9999-99";
 				sizeCpfCnpj = 18;
 			}
@@ -66,6 +68,10 @@ public class CadastroClienteBean implements Serializable {
 	
 	public boolean isEditando() {
 		return cliente.getId() != null;
+	}
+	
+	public boolean isSelecionado() {
+		return cliente.getTipo() != null;
 	}
 
 	public TipoPessoa[] getTipos() {

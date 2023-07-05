@@ -32,7 +32,7 @@ public class Produtos implements Serializable {
 	private String jpql;
 	
 	public Produto guardar(Produto produto) {
-		return produto = manager.merge(produto);
+		return manager.merge(produto);
 	}
 
 	public Produto porSku(String sku) {
@@ -43,6 +43,11 @@ public class Produtos implements Serializable {
 					.createQuery(jpql, Produto.class)
 					.setParameter("sku", sku.toUpperCase())
 					.getSingleResult();
+			
+			if (produto != null) {
+				produto.setSku(produto.getSku().toUpperCase());
+			}
+			
 			return produto;
 		} catch (NoResultException e) {
 			return null;
@@ -51,6 +56,7 @@ public class Produtos implements Serializable {
 	
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	public List<Produto> filtrados(ProdutoFilter filtro) {
+		List<Produto> produtos = null;
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Produto.class);
 		
@@ -62,7 +68,11 @@ public class Produtos implements Serializable {
 			criteria.add(ilike("nome", filtro.getNome(), ANYWHERE));
 		}
 		
-		return criteria.addOrder(asc("nome")).list();
+		produtos = criteria.addOrder(asc("nome")).list();
+		if(produtos != null) {
+			produtos.forEach(p -> p.setSku(p.getSku().toUpperCase()));
+		}
+		return produtos;
 	}
 
 	public Produto porId(Long id) {
@@ -76,7 +86,7 @@ public class Produtos implements Serializable {
 			manager.remove(produto);
 			manager.flush();
 		} catch (PersistenceException e) {
-			throw new NegocioException("Produto não pode ser excluído.");
+			throw new NegocioException("O produto " + produto.getSku() +" não pode ser excluído.");
 		}
 	}
 

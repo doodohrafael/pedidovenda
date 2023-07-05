@@ -10,8 +10,9 @@
 		
 			<h:outputText value="#{item.produto.sku}" rendered="#{item.produtoAssociado}" />
 			
-			<p:inputText size="8" value="#{cadastroPedidoBean.sku}" label="SKU"
+			<p:inputText id="sku" size="8" value="#{cadastroPedidoBean.sku}" label="SKU"
 				rendered="#{not item.produtoAssociado}" maxlength="20">
+				<p:tooltip for="sku" value="Informe um SKU completo e pressione 'Enter'" />
 				<p:ajax event="change" process="@this"
 					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal"
 					listener="#{cadastroPedidoBean.carregarProdutoPorSku}" />

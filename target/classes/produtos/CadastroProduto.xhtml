@@ -52,24 +52,28 @@
 					value="#{cadastroProdutoBean.produto.nome}" />
 
 				<p:outputLabel value="Categoria" for="categoria" />
-				<p:selectOneMenu id="categoria"
-					value="#{cadastroProdutoBean.categoriaPai}">
-					<f:selectItem itemLabel="Selecione a categoria" />
-					<f:selectItems value="#{cadastroProdutoBean.categoriasRaizes}"
-						var="categoria" itemValue="#{categoria}"
-						itemLabel="#{categoria.descricao}" />
-					<p:ajax listener="#{cadastroProdutoBean.carregarSubcategorias}"
-						update="subcategoria" />
-				</p:selectOneMenu>
+				<h:panelGroup>
+					<p:selectOneMenu id="categoria"
+						value="#{cadastroProdutoBean.categoriaPai}">
+						<f:selectItem itemLabel="Selecione a categoria" />
+						<f:selectItems value="#{cadastroProdutoBean.categoriasRaizes}"
+							var="categoria" itemValue="#{categoria}"
+							itemLabel="#{categoria.descricao}" />
+						<p:ajax listener="#{cadastroProdutoBean.carregarSubcategorias}"
+							update="subcategoria" />
+					</p:selectOneMenu>
+				</h:panelGroup>
 
 				<p:outputLabel value="Subcategoria" for="subcategoria" />
-				<p:selectOneMenu id="subcategoria"
-					value="#{cadastroProdutoBean.produto.categoria}">
-					<f:selectItem itemLabel="Selecione a subcategoria" />
-					<f:selectItems value="#{cadastroProdutoBean.subcategorias}"
-						var="subcategoria" itemValue="#{subcategoria}"
-						itemLabel="#{subcategoria.descricao}" />
-				</p:selectOneMenu>
+				<h:panelGroup>
+					<p:selectOneMenu id="subcategoria"
+						value="#{cadastroProdutoBean.produto.categoria}">
+						<f:selectItem itemLabel="Selecione a subcategoria" />
+						<f:selectItems value="#{cadastroProdutoBean.subcategorias}"
+							var="subcategoria" itemValue="#{subcategoria}"
+							itemLabel="#{subcategoria.descricao}" />
+					</p:selectOneMenu>
+				</h:panelGroup>
 
 				<p:outputLabel value="Valor unitário" for="valorUnitario" />
 				<p:inputText id="valorUnitario" size="6" maxlength="10"

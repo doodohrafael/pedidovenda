@@ -32,10 +32,10 @@ public class CadastroProdutoBean implements Serializable {
 	@Inject
 	private CadastroProdutoService cadastroProdutoService;
 
-	@Getter
+	@Getter @Setter
 	private Produto produto;
 	
-	@Setter 
+	@NotNull @Getter @Setter 
 	private Categoria categoriaPai;
 	
 	@Getter
@@ -60,7 +60,6 @@ public class CadastroProdutoBean implements Serializable {
 	
 	private void limparCampos() {
 		produto = new Produto();
-		categoriaPai = null;
 		subcategorias = new ArrayList<>();
 	}
 
@@ -75,22 +74,7 @@ public class CadastroProdutoBean implements Serializable {
 	}
 	
 	public boolean isEditando() {
-		return this.produto.getId() != null;
+		return produto.getId() != null;
 	}
 	
-	@NotNull
-	public Categoria getCategoriaPai() {
-		return categoriaPai;
-	}
-	
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-		
-		if (this.produto != null) {
-			if (this.produto.getCategoria() != null) {
-				this.categoriaPai = this.produto.getCategoria().getCategoriaPai();
-			}
-		}
-	}
-
 }

@@ -23,6 +23,7 @@ public class CadastroProdutoService implements Serializable {
 			throw new NegocioException("Já existe um produto com o SKU informado.");
 		}
 		
+		produto.setSku(produto.getSku().toUpperCase());		
 		return produtos.guardar(produto);
 	}
 

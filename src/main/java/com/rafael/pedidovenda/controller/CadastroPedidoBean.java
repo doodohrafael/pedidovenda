@@ -56,7 +56,7 @@ public class CadastroPedidoBean implements Serializable {
 	@Getter @Setter
 	private Produto produtoLinhaEditavel;
 	
-	@Setter
+	@Getter @Setter @SKU
 	private String sku;
 	
 	@Getter
@@ -168,9 +168,4 @@ public class CadastroPedidoBean implements Serializable {
 		pedido.recalcularValorTotal();
 	}
 	
-	@SKU
-	public String getSku() {
-		return sku;
-	}
-
 }

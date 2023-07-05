@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.Session;
 
-import com.rafael.pedidovenda.util.jsf.FacesUtil;
+import static com.rafael.pedidovenda.util.jsf.FacesUtil.addErrorMessage;
 import com.rafael.pedidovenda.util.report.ExecutorRelatorio;
 
 import lombok.Getter;
@@ -27,14 +27,10 @@ public class RelatorioPedidosEmitidosBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@Getter
-	@Setter
-	@NotNull
+	@NotNull @Getter @Setter
 	private Date dataInicio;
 	
-	@Getter
-	@Setter
-	@NotNull
+	@NotNull @Getter @Setter
 	private Date dataFim;
 	
 	@Inject
@@ -60,11 +56,8 @@ public class RelatorioPedidosEmitidosBean implements Serializable {
 		if (executor.isRelatorioGerado()) {
 			facesContext.responseComplete();
 		} else {
-			FacesUtil.addErrorMessage("A execução do relatório não retornou dados.");
+			addErrorMessage("A execução do relatório não retornou dados.");
 		}
 	}
 	
 }
-
-
-

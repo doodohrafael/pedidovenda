@@ -31,7 +31,6 @@ public class CancelamentoPedidoBean implements Serializable {
 	private Event<PedidoAlteradoEvent> pedidoAlteradoEvent;
 	
 	public void cancelarPedido() {
-		
 		try {
 			pedido = cancelamentoPedidoService.cancelar(pedido);
 			pedidoAlteradoEvent.fire(new PedidoAlteradoEvent(pedido));
