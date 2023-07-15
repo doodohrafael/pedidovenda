@@ -32,12 +32,16 @@ public class EnderecoEntrega implements Serializable {
 	@Column(name = "entrega_cidade", nullable = false, length = 60)
 	private String cidade;
 	
-	@NotBlank @Size(max = 60)
-	@Column(name = "entrega_uf", nullable = false, length = 60)
+	@NotBlank @Size(max = 2)
+	@Column(name = "entrega_uf", nullable = false, length = 2)
 	private String uf;
 	
 	@NotBlank @Size(max = 9)
 	@Column(name = "entrega_cep", nullable = false, length = 9)
 	private String cep;
+	
+	@NotBlank @Size(max = 80)
+	@Column(name = "entrega_bairro", nullable = false, length = 80)
+	private String bairro;
 
 }

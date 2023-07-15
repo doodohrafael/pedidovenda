@@ -237,7 +237,12 @@ public class Pedido implements Serializable {
 	public boolean isNaoEnviavelPorEmail() {
 		return isNovo() || isCancelado();
 	}
-
+	
+	@Transient
+	public boolean isNaoEnviavelPorSms() {
+		return isNovo() || isCancelado();
+	}
+	
 	public List<ItemPedido> getItens() {
 		return itens;
 	}

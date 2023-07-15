@@ -16,7 +16,7 @@ import org.apache.velocity.tools.generic.NumberTool;
 import com.outjected.email.api.MailMessage;
 import com.outjected.email.impl.templating.velocity.VelocityTemplate;
 import com.rafael.pedidovenda.model.Pedido;
-import com.rafael.pedidovenda.service.EnvioPedidoEmailService;
+import com.rafael.pedidovenda.service.EnvioPedidoService;
 import com.rafael.pedidovenda.util.mail.Mailer;
 
 @Named
@@ -26,7 +26,7 @@ public class EnvioPedidoEmailBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private EnvioPedidoEmailService envioPedidoEmailService;
+	private EnvioPedidoService envioPedidoService;
 	
 	@Inject
 	private Mailer mailer;
@@ -35,23 +35,16 @@ public class EnvioPedidoEmailBean implements Serializable {
 	@PedidoEdicao
 	private Pedido pedido;
 	
-	public static final String PATH = "/emails/pedido.template";
+	private static final String PATH_TEMPLATE_EMAIL = "/emails/pedido.template";
 	
 	public void enviarPedido() throws IOException {
-		
-		try {
-			pedido.removerItemVazio();
-			pedido = envioPedidoEmailService.salvar(pedido);
-			addInfoMessage("Pedido salvo com sucesso!");
-		} finally {
-			pedido.adicionarItemVazio();
-		}
+		removerEAdicionarItemVazioESalvarPedido();
 		
 		MailMessage message = mailer.novaMensagem();
 		
 		if (pedido.getItens() != null && !pedido.getItens().isEmpty()) {
 			
-			File file = new File(getClass().getResource(PATH).getFile());
+			File file = new File(getClass().getResource(PATH_TEMPLATE_EMAIL).getFile());
 			
 			message.to(pedido.getCliente().getEmail())
 				.subject("Pedido " + pedido.getId())
@@ -63,6 +56,16 @@ public class EnvioPedidoEmailBean implements Serializable {
 		
 		addInfoMessage("Pedido enviado por e-mail com sucesso!");
 		} 
+	}
+	
+	public void removerEAdicionarItemVazioESalvarPedido() {
+		try {
+			pedido.removerItemVazio();
+			pedido = envioPedidoService.salvar(pedido);
+			addInfoMessage("Pedido salvo com sucesso!");
+		} finally {
+			pedido.adicionarItemVazio();
+		}
 	}
 	
 }

@@ -5,9 +5,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Login</title>
+		<title>Sistema Pedido e Venda - Login</title>
 	
 		<h:outputStylesheet library="css" name="sistema.css" />
 	</h:head>
@@ -17,8 +18,9 @@
 			<f:event listener="#{loginBean.preRender}" type="preRenderView" />
 		</f:metadata>
 		
-		<div id="login-dialog">
-			<h1>Login</h1>
+		<div id="login" class="logo-reboot-login">
+			<h:graphicImage library="images" name="logo-reboot.png" styleClass="logo-reboot-login" />
+			<h1 class="titulo-login">SOLUÇÕES INTELIGENTES</h1>
 			
 			<h:form id="frm" prependId="false">
 			
@@ -27,15 +29,17 @@
 				</p:messages>
 				
 				<h:panelGrid columns="2" styleClass="grid-login">
-					<p:outputLabel value="E-mail" />
+					<p:outputLabel value="E-mail" style="font-weight: bolder !important;"	/>
 					<p:inputText size="30" id="j_username" value="#{loginBean.email}" />
-					
-					<p:outputLabel value="Senha" />
+						
+					<p:outputLabel value="Senha" style="font-weight: bolder !important;" />
 					<p:password size="30" id="j_password" />
-					
+						
 					<h:panelGroup />
-					<p:commandButton value="Login" action="#{loginBean.login}" ajax="false" />
+					<p:commandButton value="Entrar" action="#{loginBean.login}" ajax="false" icon="pi pi-user" 
+						styleClass="btn-entrar" />
 				</h:panelGrid>
+				
 			</h:form>
 		</div>
 	</h:body>

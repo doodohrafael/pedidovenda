@@ -5,15 +5,38 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:panelGrid columns="4" style="width: 100%;" 
-		columnClasses="rotulo, campo, rotulo, campo">
+		columnClasses="rotulo-data-entrega, campo, rotulo, campo">
 		<p:outputLabel value="Data da entrega" for="dataEntrega" />
 		<p:calendar id="dataEntrega" size="7" pattern="dd/MM/yyy" 
 			value="#{cadastroPedidoBean.pedido.dataEntrega}" 
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 		
-		<p:spacer />
-		<p:spacer />
-		
+	</p:panelGrid>
+	
+	<p:spacer />
+	<p:spacer />
+	<p:spacer />
+	<p:spacer />
+	
+	<p:panelGrid columns="4" style="width: 100%;" columnClasses="rotulo-buscar-por-cep, campo, rotulo, campo">
+	
+		<p:outputLabel value="CEP" for="entregaCep" />
+		<p:inputMask id="entregaCep" size="9" maxlength="9" mask="99999-999"
+			value="#{cadastroPedidoBean.cep}" disabled="#{cadastroPedidoBean.pedido.naoAlteravel}">
+			<p:tooltip for="entregaCep" value="Buscar endereço por cep." />	
+			<p:ajax event="change" update="entregaLogradouro entregaCidade entregaEstado " 
+				listener="#{cadastroPedidoBean.buscarEndereco}" />
+		</p:inputMask>
+			
+	</p:panelGrid>
+	
+	<p:spacer />
+	<p:spacer />
+	<p:spacer />
+	<p:spacer />
+	
+	<p:panelGrid columns="4" style="width: 100%;" columnClasses="rotulo, campo, rotulo, campo">
+	
 		<p:outputLabel value="Logradouro" for="entregaLogradouro" />
 		<p:inputText id="entregaLogradouro" size="50" maxlength="150"
 			value="#{cadastroPedidoBean.pedido.enderecoEntrega.logradouro}"
@@ -24,26 +47,26 @@
 			value="#{cadastroPedidoBean.pedido.enderecoEntrega.numero}"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 		
-		<p:outputLabel value="Complemento" for="entregaComplemento" />
-		<p:inputText id="entregaComplemento" size="50" maxlength="150"
-			value="#{cadastroPedidoBean.pedido.enderecoEntrega.complemento}"
+		<p:outputLabel value="Estado" for="entregaEstado" />
+		<p:inputText id="entregaEstado" size="2" maxlength="2"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.uf}"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 		
 		<p:outputLabel value="Cidade" for="entregaCidade" />
 		<p:inputText id="entregaCidade" size="20" maxlength="60"
 			value="#{cadastroPedidoBean.pedido.enderecoEntrega.cidade}"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
-		
-		<p:outputLabel value="Estado" for="entregaEstado" />
-		<p:inputText id="entregaEstado" size="20" maxlength="60"
-			value="#{cadastroPedidoBean.pedido.enderecoEntrega.uf}"
+			
+		<p:outputLabel value="Bairro" for="entregaBairro" />
+		<p:inputText id="entregaBairro" size="50" maxlength="80"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.bairro}"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
 		
-		<p:outputLabel value="CEP" for="entregaCep" />
-		<p:inputMask id="entregaCep" size="9" maxlength="9" mask="99999-999"
-			value="#{cadastroPedidoBean.pedido.enderecoEntrega.cep}"
+		<p:outputLabel value="Complemento" for="entregaComplemento" />
+		<p:inputText id="entregaComplemento" size="50" maxlength="150"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.complemento}"
 			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
+		
 	</p:panelGrid>
 
 </ui:composition>
-

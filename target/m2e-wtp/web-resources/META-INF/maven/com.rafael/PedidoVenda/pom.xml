@@ -124,7 +124,7 @@
 		    <scope>compile</scope>
 		</dependency>
 		
-		<!-- Requerido para envio de e-mails -->
+		<!-- Para envio de e-mails -->
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
@@ -145,7 +145,7 @@
 		    <version>2.3</version>
 		</dependency>
 		
-		<!-- Usamos para formatar números em templates -->
+		<!-- Para formatar números em templates -->
 		<dependency>
 		    <groupId>org.apache.velocity.tools</groupId>
 		    <artifactId>velocity-tools-generic</artifactId>
@@ -171,6 +171,7 @@
 		    <version>3.1.4.RELEASE</version>
 		</dependency>
 		
+		<!-- API de Servlet -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
@@ -178,12 +179,34 @@
 		    <scope>provided</scope>
 		</dependency>
 		
+		<!-- Biblioteca para relatórios -->
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
 		    <version>6.20.5</version>
 		    <scope>compile</scope>
 		</dependency>
+		
+		<!-- Bibliotecas para consumir serviço ViaCep -->
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.14</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.10.1</version>
+		</dependency>
+		
+		<!-- API para enviar SMS -->
+		<dependency>
+		    <groupId>com.telesign</groupId>
+		    <artifactId>telesign</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+
 			
 	</dependencies>
 	<build>

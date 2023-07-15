@@ -2,7 +2,7 @@
 
 body {
 	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Victor Mono', monospace;
 	margin: 0px;
 	font-weight: normal;
 }
@@ -33,19 +33,28 @@ footer {
 	padding: 0px 8px;
 }
 
-#login-dialog {
-	width: 290px;
-	margin: auto;
-	margin-top: 150px;
+#login {
+	width: 27% !important;
+	margin: auto !important;
+	margin-top: 100px !important;
+}
+
+.titulo-login {
+	font-weight: 600 !important;
+	text-align: center !important;
+	color: tomato !important
 }
 
 .grid-login {
-	/* background-color: black;
-	border-radius: 8px; 
-	border: 1px solid black;
-	margin-top: 8px;
-	padding: 10px;
-	*/
+	border-radius: 12px; 
+	border: none;
+	padding: 90px;
+	background-color: #2196F3 !important;
+}
+
+.btn-entrar {
+	background-color: tomato !important;
+	color: white !important;
 }
 
 h1 {
@@ -60,6 +69,10 @@ h1 {
 	margin-top: 20px !important;
 }
 
+.logo-reboot-login {
+	width: 180% !important;
+}
+
 #botao-novo {
 	margin-right: 10px;
 }
@@ -68,8 +81,32 @@ h1 {
 	width: 100px !important;
 }
 
+.rotulo-usuario {
+	width: 200px !important;
+}
+
 .rotulo-cliente {
 	width: 180px !important;
+}
+
+.rotulo-endereco {
+	width: 6% !important;
+}
+
+.rotulo-data-entrega {
+	width: 8% !important;
+}
+
+.rotulo-buscar-por-cep {
+	width: 3% !important;
+}
+
+.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+	text-align: center !important;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center !important;
 }
 
 .ajax-status {
@@ -143,6 +180,12 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 .btn-email {
 	background-color: blueviolet !important;
 	border-color: blueviolet !important;
+	color: white !important;
+}
+
+.btn-sms {
+	background-color: darkorange !important;
+	border-color: darkorange !important;
 	color: white !important;
 }
 
@@ -226,3 +269,17 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 	font-weight: bold !important;
 	color: tomato !important;
 }
+
+.data-entrega {
+	font-weight: bold !important; 
+	font-size: 2.1em !important;
+	margin-right: 30px !important;
+}
+
+.buscar-cep {
+	font-weight: bold !important; 
+	font-size: 2.1em !important;
+	margin-right: 30px !important;
+}
+
+

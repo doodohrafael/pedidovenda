@@ -16,6 +16,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import com.rafael.pedidovenda.model.Cliente;
 import com.rafael.pedidovenda.model.EnderecoEntrega;
+import com.rafael.pedidovenda.model.EnderecoViaCep;
 import com.rafael.pedidovenda.model.FormaPagamento;
 import com.rafael.pedidovenda.model.ItemPedido;
 import com.rafael.pedidovenda.model.Pedido;
@@ -25,6 +26,7 @@ import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
+import com.rafael.pedidovenda.service.ViaCepService;
 import com.rafael.pedidovenda.validation.SKU;
 
 import lombok.Getter;
@@ -35,6 +37,12 @@ import lombok.Setter;
 public class CadastroPedidoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Getter @Setter
+	private String cep;
+	
+	@Inject
+	private ViaCepService viaCepService;
 	
 	@Inject
 	private CadastroPedidoService cadastroPedidoService;
@@ -68,13 +76,14 @@ public class CadastroPedidoBean implements Serializable {
 	
 	public void inicializar() {
 		if(isNotPostback()) {
+			if(pedido != null && pedido.getId() == null) {
+				pedido.setEnderecoEntrega(new EnderecoEntrega());
+			}
 			vendedores = usuarios.vendedores();
 			pedido.adicionarItemVazio();
 			recalcularPedido();
 		}
-		if(pedido != null && pedido.getId() == null) {
-			pedido.setEnderecoEntrega(new EnderecoEntrega());
-		}
+		
 	}
 	
 	public void limparCampos() {
@@ -166,6 +175,19 @@ public class CadastroPedidoBean implements Serializable {
 		}
 		
 		pedido.recalcularValorTotal();
+	}
+	
+	public void buscarEndereco() {
+		String cepSemTraco = cep.replace("-", "");
+		EnderecoViaCep endereco = viaCepService.buscarEnderecoPorCep(cepSemTraco);
+		
+		// tenho que disabilitar os campos e habitar quando um cep for encontrado.
+		pedido.getEnderecoEntrega().setCep(endereco.getCep());
+		pedido.getEnderecoEntrega().setLogradouro(endereco.getLogradouro());
+		pedido.getEnderecoEntrega().setUf(endereco.getUf());
+		pedido.getEnderecoEntrega().setCidade(endereco.getLocalidade());
+		pedido.getEnderecoEntrega().setBairro(endereco.getBairro());
+		
 	}
 	
 }

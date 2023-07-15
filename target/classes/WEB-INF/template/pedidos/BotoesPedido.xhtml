@@ -23,9 +23,13 @@
 				process="@this" update="@form" styleClass="btn-cancelar" icon="pi pi-ban" 
 				disabled="#{cadastroPedidoBean.pedido.naoCancelavel or not seguranca.cancelarPedidoPermitido}" />
 				
-			<p:commandButton value="Enviar por e-mail" action="#{envioPedidoEmailBean.enviarPedido}" 
+			<p:commandButton value="Enviar por E-mail" action="#{envioPedidoEmailBean.enviarPedido}" 
 				icon="pi pi-send" styleClass="btn-email" process="@this" 
 				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorEmail}" />
+				
+			<p:commandButton value="Enviar por SMS" action="#{envioPedidoSmsBean.enviarPedido}" 
+				icon="pi pi-send" styleClass="btn-sms" process="@this" 
+				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorSms}" />
 
 			<p:divider layout="vertical" />
 

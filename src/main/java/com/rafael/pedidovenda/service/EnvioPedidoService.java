@@ -11,7 +11,7 @@ import com.rafael.pedidovenda.model.Pedido;
 import com.rafael.pedidovenda.repository.Pedidos;
 import com.rafael.pedidovenda.util.jpa.Transactional;
 
-public class EnvioPedidoEmailService implements Serializable {
+public class EnvioPedidoService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
