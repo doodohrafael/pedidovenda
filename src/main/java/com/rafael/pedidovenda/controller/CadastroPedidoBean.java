@@ -187,7 +187,6 @@ public class CadastroPedidoBean implements Serializable {
 		pedido.getEnderecoEntrega().setUf(endereco.getUf());
 		pedido.getEnderecoEntrega().setCidade(endereco.getLocalidade());
 		pedido.getEnderecoEntrega().setBairro(endereco.getBairro());
-		
 	}
 	
 }

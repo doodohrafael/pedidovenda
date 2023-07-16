@@ -48,7 +48,7 @@ public class Pedido implements Serializable {
 	@NotNull
 	@CreationTimestamp
 	@Temporal(TIMESTAMP)
-	@Column(name = "data_criacao", nullable = false)
+	@Column(name = "data_criacao", nullable = false, columnDefinition = "datetime")
 	private Date dataCriacao;
 
 	@Column(columnDefinition = "text")

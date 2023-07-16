@@ -5,6 +5,8 @@ import static com.rafael.pedidovenda.util.jsf.FacesUtil.addInfoMessage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.enterprise.context.RequestScoped;
@@ -46,12 +48,17 @@ public class EnvioPedidoEmailBean implements Serializable {
 			
 			File file = new File(getClass().getResource(PATH_TEMPLATE_EMAIL).getFile());
 			
+			String dataCriacaoFormatada = formatarDataCriacao(pedido.getDataCriacao());
+			String dataEntregaFormatada = formatarDataEntrega(pedido.getDataEntrega());
+			
 			message.to(pedido.getCliente().getEmail())
 				.subject("Pedido " + pedido.getId())
 				.bodyHtml(new VelocityTemplate(file))
 				.put("pedido", pedido)
 				.put("numberTool", new NumberTool())
 				.put("locale", new Locale("pt", "BR"))
+				.put("dataCriacaoFormatada", dataCriacaoFormatada)
+				.put("dataEntregaFormatada", dataEntregaFormatada)
 				.send();
 		
 		addInfoMessage("Pedido enviado por e-mail com sucesso!");
@@ -66,6 +73,16 @@ public class EnvioPedidoEmailBean implements Serializable {
 		} finally {
 			pedido.adicionarItemVazio();
 		}
+	}
+	
+	public String formatarDataCriacao(Date data) {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return format.format(data);
+	}
+	
+	public String formatarDataEntrega(Date data) {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		return format.format(data);
 	}
 	
 }

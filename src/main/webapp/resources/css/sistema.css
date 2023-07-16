@@ -17,7 +17,7 @@ header {
 }
 
 #tam-logo-header {
-	width: 170px;
+	width: 100px;
 }
 
 header>div {
@@ -42,14 +42,32 @@ footer {
 .titulo-login {
 	font-weight: 600 !important;
 	text-align: center !important;
-	color: tomato !important
+	color: tomato !important;
+	margin-bottom: 5px;
+	
+}
+
+
+.logo-reboot-login {
+	width: 100% !important;
+	display: block;
+	margin: auto;
+	/*border: green solid 1px;*/
+	margin-top: 260px;
+	margin-bottom: 5px;
 }
 
 .grid-login {
 	border-radius: 12px; 
-	border: none;
-	padding: 90px;
 	background-color: #2196F3 !important;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: right;
+	margin: auto !important;
+	width: 60% !important;
+	color: white;
 }
 
 .btn-entrar {
@@ -67,10 +85,6 @@ h1 {
 .painel {
 	width: 100% !important;
 	margin-top: 20px !important;
-}
-
-.logo-reboot-login {
-	width: 180% !important;
 }
 
 #botao-novo {
@@ -232,11 +246,9 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 
 .txt-emitido {
 	color: limegreen !important;
-	color: limegreen !important;
 }
 
 .txt-orcamento {
-	color: gold !important;
 	color: gold !important;
 }
 
@@ -256,12 +268,12 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 }
 
 .tabela {
-	margin-top: 20px;
+	margin-top: 20px !important;
 }
 
 .editar-excluir {
-	width: 200px; 
-	text-align: center;
+	width: 200px !important; 
+	text-align: center !important;
 }
 
 .titulo-h2 {
@@ -281,5 +293,17 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 	font-size: 2.1em !important;
 	margin-right: 30px !important;
 }
+
+.span-nome-usuario {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	margin-right: 60px;
+	font-size: 15px !important;
+}
+
+
+
+
 
 

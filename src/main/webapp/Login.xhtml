@@ -29,12 +29,13 @@
 				</p:messages>
 				
 				<h:panelGrid columns="2" styleClass="grid-login">
-					<p:outputLabel value="E-mail" style="font-weight: bolder !important;"	/>
+					<p:outputLabel value="E-mail" 
+						style="font-weight: bolder !important; display: flex; width: 50px;" />
 					<p:inputText size="30" id="j_username" value="#{loginBean.email}" />
-						
-					<p:outputLabel value="Senha" style="font-weight: bolder !important;" />
+							
+					<p:outputLabel value="Senha" style="font-weight: bolder !important; display: flex; width: 50px;"  />
 					<p:password size="30" id="j_password" />
-						
+							
 					<h:panelGroup />
 					<p:commandButton value="Entrar" action="#{loginBean.login}" ajax="false" icon="pi pi-user" 
 						styleClass="btn-entrar" />

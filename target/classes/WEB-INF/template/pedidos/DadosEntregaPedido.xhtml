@@ -20,14 +20,14 @@
 	
 	<p:panelGrid columns="4" style="width: 100%;" columnClasses="rotulo-buscar-por-cep, campo, rotulo, campo">
 	
-		<p:outputLabel value="CEP" for="entregaCep" />
-		<p:inputMask id="entregaCep" size="9" maxlength="9" mask="99999-999"
+		<p:outputLabel value="Buscar por CEP" for="entregaCep" />
+		<p:inputMask id="buscarCep" size="9" maxlength="9" mask="99999-999"
 			value="#{cadastroPedidoBean.cep}" disabled="#{cadastroPedidoBean.pedido.naoAlteravel}">
-			<p:tooltip for="entregaCep" value="Buscar endereço por cep." />	
-			<p:ajax event="change" update="entregaLogradouro entregaCidade entregaEstado " 
+			<p:tooltip for="buscarCep" value="Buscar endereço por cep." />	
+			<p:ajax event="change" update="entregaLogradouro entregaEstado entregaCidade entregaCep entregaBairro" 
 				listener="#{cadastroPedidoBean.buscarEndereco}" />
 		</p:inputMask>
-			
+		
 	</p:panelGrid>
 	
 	<p:spacer />
@@ -36,6 +36,12 @@
 	<p:spacer />
 	
 	<p:panelGrid columns="4" style="width: 100%;" columnClasses="rotulo, campo, rotulo, campo">
+	
+		<p:outputLabel value="CEP" for="entregaCep" />
+		<p:inputMask id="entregaCep" size="9" maxlength="9" mask="99999-999"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.cep}" 
+			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}">
+		</p:inputMask>
 	
 		<p:outputLabel value="Logradouro" for="entregaLogradouro" />
 		<p:inputText id="entregaLogradouro" size="50" maxlength="150"

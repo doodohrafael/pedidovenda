@@ -1,36 +1,189 @@
-<html>
-    <body>
-        <table>
-            <tr>
-                <td style="width: 200px !important;">Número: </td>
-                <td>$pedido.id</td>
-            </tr>
-            <tr>
-                <td>Cliente: </td>
-                <td>$pedido.cliente.nome</td>
-            </tr>
-            <tr>
-                <td>Valor total: </td>
-                <td>$numberTool.currency($pedido.valorTotal)</td>
-            </tr>
-        </table>
-        <table border="1" cellspacing="0" cellpadding="3">
-            <tr>
-                <th>Produto</th>
-                <th>Valor unitário</th>
-                <th>Quantidade</th>
-                <th>Valor total</th>
-            </tr>
-            #foreach ($item in $pedido.itens)
-            	#if ($item.produto.id)
-	            <tr>
-	                <td>$item.produto.nome</td>
-	                <td>$numberTool.currency($item.produto.valorUnitario)</td>
-	                <td>$item.quantidade</td>
-	                <td>$numberTool.currency($item.valorTotal)</td>
-	            </tr>
-            	#end
-            #end
-        </table>
-    </body>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+    <link rel="stylesheet" href="template-email.css">
+    
+<style>
+	body {
+    font-family: 'Victor Mono', monospace  !important;
+    width: 50%  !important;
+    margin: auto  !important;
+}
+
+#header {
+    border: 1px solid black  !important; 
+    width: 100%  !important; 
+    background-color: black  !important;
+    text-align: center  !important;
+}
+
+#h1-header {
+    color: white  !important;
+}
+
+#logo-reboot {
+    width: 350px  !important; 
+    margin: auto  !important; 
+    display: block  !important;
+    margin-top: 23px  !important;
+}
+
+#corpo-email {
+    background-color: tomato  !important;
+    margin-top: -27px !important;
+    padding-bottom: 10px;
+}
+
+#h2-corpo-email {
+    height: 30px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-size: 35px !important;
+}
+
+#h3-corpo-email {
+    font-weight: 600 !important;
+    font-size: 27px !important;
+    background-color: #2196F3 !important;
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+.p-detalhes-entrega {
+    margin-left: 25px !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+}
+
+.dt-detalhes-entrega {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+.p-itens-pedido {
+    margin-left: 25px !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+}
+
+.dt-itens-pedido {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+.tabela-labels {
+    background-color: #2196F3 !important;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 20px
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #2196F3;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2196F3;
+    color: black;
+    font-size: 20px;
+  }
+
+  #footer {
+    background-color: #2196F3;
+    border: white 1px solid;
+    height: 50px;
+  }
+
+	
+
+</style>
+
+</head>
+
+<body>
+    <header id="header">
+        <img id="logo-reboot" src="https://imagizer.imageshack.com/img922/6858/IPesy1.png" alt="Logo Reboot">
+        <h1 id="h1-header">Pedido #$pedido.id realizado com sucesso!</h1>
+    </header>
+
+    <div id="corpo-email">
+
+        <div>
+            <h3 id="h3-corpo-email">&nbsp;Detalhes da entrega</h3>
+                <label class="p-detalhes-entrega">Nome do destinatário: </label> <label class="dt-detalhes-entrega">$pedido.cliente.nome</label> <br>
+                <label class="p-detalhes-entrega">Número de telefone: </label> <label class="dt-detalhes-entrega">$pedido.cliente.telefone</label> <br>
+                <label class="p-detalhes-entrega">Endereço de entrega: </label> 
+                <label class="dt-detalhes-entrega">
+                    $pedido.enderecoEntrega.logradouro, $pedido.enderecoEntrega.numero - $pedido.enderecoEntrega.uf, $pedido.enderecoEntrega.cidade, $pedido.enderecoEntrega.cep</label>
+        </div>
+
+        <div>
+            <h3 id="h3-corpo-email">&nbsp;Detalhes do pedido</h3>
+            
+            <label class="p-detalhes-entrega">Nome do cliente: </label> <label class="dt-detalhes-entrega">$pedido.cliente.nome</label> <br>
+            <label class="p-detalhes-entrega">Status do pedido: </label> <label class="dt-detalhes-entrega">$pedido.status.descricao</label> <br>
+            <label class="p-detalhes-entrega">Data e hora do pedido: </label> <label class="dt-detalhes-entrega">$dataCriacaoFormatada</label> <br>
+            <label class="p-detalhes-entrega">E-mail do cliente: </label> <label class="dt-detalhes-entrega">$pedido.cliente.email</label>
+            
+            <h3 id="h3-corpo-email">&nbsp;Itens do pedido</h3>
+
+                <table id="customers">
+                    <thead>
+                        <tr class="tabela-labels">
+                            <th>Produto</th>
+                            <th>Valor unitário</th>
+                            <th style="text-align: center !important;">Quantidade</th>
+                            <th>Valor total</th>
+                        </tr>
+                        #foreach ($item in $pedido.itens)
+                        #if ($item.produto.id)
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$item.produto.nome</td>
+                            <td>$numberTool.currency($item.produto.valorUnitario)</td>
+                            <td>$item.quantidade</td>
+                            <td>$numberTool.currency($item.valorTotal)</td>
+                        </tr>
+                        #end
+                    #end
+                    </tbody>
+                </table>
+                <br>
+
+                <label class="p-itens-pedido">Valor do desconto: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorDesconto)</label> <br>
+            	<label class="p-itens-pedido">Valor do frete: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorFrete)</label> <br>
+                <label class="p-itens-pedido">Valor total: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorTotal)</label> <br>
+                <label class="p-itens-pedido">Forma de pagamento: </label> <label class="dt-itens-pedido">$pedido.formaPagamento.descricao</label> <br>
+                <label class="p-itens-pedido">Data de entrega: </label> <label class="dt-itens-pedido">$dataEntregaFormatada</label>
+        </div>
+    </div>
+
+    <footer id="footer">
+
+    </footer>
+
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+</style>
+
 </html>
