@@ -19,8 +19,9 @@
 				styleClass="btn-emitir" process="@form"	update="@form" icon="pi pi-check-circle" 
 				disabled="#{cadastroPedidoBean.pedido.naoEmissivel or not seguranca.emitirPedidoPermitido}" />
 				
-			<p:commandButton value="Cancelar" action="#{cancelamentoPedidoBean.cancelarPedido}" 
-				process="@this" update="@form" styleClass="btn-cancelar" icon="pi pi-ban" 
+			<p:commandButton value="Cancelar" 
+				process="@this" update="@form :frmCadastro:confirmacaoCancelamentoDialog"
+				oncomplete="PF('confirmacaoDialog').show()" styleClass="btn-cancelar" icon="pi pi-ban" 
 				disabled="#{cadastroPedidoBean.pedido.naoCancelavel or not seguranca.cancelarPedidoPermitido}" />
 				
 			<p:commandButton value="Enviar por E-mail" action="#{envioPedidoEmailBean.enviarPedido}" 
@@ -37,5 +38,13 @@
 				styleClass="btn-pesquisa" icon="pi pi-search" />
 		</p:toolbarGroup>
 	</p:toolbar>
+	
+			<p:confirmDialog id="confirmacaoCancelamentoDialog" widgetVar="confirmacaoDialog" header="Cancelamento de pedido" 
+				message="Tem certeza que deseja cancelar esse pedido #{pedido.id}?">
+				<p:button value="Não" onclick="PF('confirmacaoDialog').hide(); return false;" styleClass="btn-nao" />
+				
+				<p:commandButton value="Sim" styleClass="btn-excluir" action="#{cancelamentoPedidoBean.cancelarPedido}" 
+					update="@form" oncomplete="PF('confirmacaoDialog').hide();" process="@this" />
+			</p:confirmDialog>
 
 </ui:composition>
