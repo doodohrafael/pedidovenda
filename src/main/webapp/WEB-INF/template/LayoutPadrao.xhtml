@@ -20,9 +20,9 @@
 </h:head>
 
 <h:body>
-	<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoeda()">
+	<p:ajaxStatus styleClass="loading-ajax-status" onsuccess="configurarMoeda()">
 		<f:facet name="start">
-			<p:graphicImage styleClass="ajax-status-largura-img" 
+			<p:graphicImage styleClass="loading" 
 				library="images" name="loading.gif" />
 		</f:facet>
 		<f:facet name="complete">
@@ -40,6 +40,9 @@
 		<div style=" float: right; margin-right: 110px;">
 			<span class="span-nome-usuario">
 				Olá #{seguranca.nomeUsuario}!
+				<h:graphicImage id="online" library="images" name="icon-online.png" styleClass="icon-online">
+					<p:tooltip for="online" value="Você está logado" />
+				</h:graphicImage>
 			</span>
 		
 			<h:form style="display: inline-block;">
@@ -71,9 +74,9 @@
 	
 	<p:separator style="margin-top: 20px;" />
 	
-	<footer>
+	<footer style="text-align: right !important">
 		Sistema Comercial de Pedido e Venda feito por 
-		<a href="https://www.github.com/doodohrafael" target="_blank">Douglas Rafael</a>
+		<a href="https://www.github.com/doodohrafael" target="_blank" class="a-douglas-rafael-layout">Douglas Rafael</a>
 	</footer>
 	
 	<script>
