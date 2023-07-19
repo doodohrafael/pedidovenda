@@ -33,10 +33,18 @@
 
 		<p:outputLabel value="Forma de pagamento" for="formaPagamento" />
 		<p:selectOneMenu id="formaPagamento" value="#{cadastroPedidoBean.pedido.formaPagamento}"
-			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" >
+			disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" var="fg">
 			<f:selectItem itemLabel="Selecione" />
 			<f:selectItems value="#{cadastroPedidoBean.formasPagamento}" var="formaPagamento" 
 				itemValue="#{formaPagamento}" itemLabel="#{formaPagamento.descricao}" />
+				
+			<p:column styleClass="icons-payments">
+				<h:graphicImage library="images" name="#{fg.nomeIconePagamento}.png" styleClass="icons-payments" />
+			</p:column>
+			
+			<p:column>
+				<p:outputLabel value="#{fg.descricao}" />
+			</p:column>
 		</p:selectOneMenu>
 
 		<p:outputLabel value="Valor do frete" for="valorFrete" />

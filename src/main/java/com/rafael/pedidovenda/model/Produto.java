@@ -24,6 +24,7 @@ import com.rafael.pedidovenda.validation.SKU;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -57,6 +58,9 @@ public class Produto implements Serializable {
 	@ManyToOne // subcategoria
 	@JoinColumn(nullable = false)
 	private Categoria categoria;
+	
+	@Getter @Setter
+	private String nomeImagem;
 	
 	@NotNull @Min(0) @Max(value = 9999, message = "tem um valor muito alto")
 	public Integer getQuantidadeEstoque() {

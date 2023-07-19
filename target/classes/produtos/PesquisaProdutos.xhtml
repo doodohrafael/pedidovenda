@@ -5,13 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Pesquisa Produtos</ui:define>
+	<ui:define name="titulo">Pesquisa de Produtos</ui:define>
 
 	<ui:define name="corpo">
 	
 		<h:form id="frmPesquisa">
 		
-			<h1 class="titulo-h1">Pesquisa Produtos</h1>
+			<h1 class="titulo-h1">Pesquisar Produtos</h1>
 			
 			<p:messages>
 				<p:autoUpdate />
@@ -41,8 +41,12 @@
 			</p:panelGrid>
 
 			<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" 
-				var="produto" styleClass="tabela" emptyMessage="Nenhum produto encontrado."
+				var="produto" styleClass="tabela" emptyMessage="Nenhum produto encontrado." 
 				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				
+				<p:column headerText="Foto do produto" style="width: 20% !important; text-align: center !important;">
+					<h:graphicImage library="produtos" name="#{produto.nomeImagem}.png" style="width: 250px !important;" />
+				</p:column>
 
 				<p:column headerText="SKU" style="text-align: center; width: 100px;">
 					<h:outputLabel value="#{produto.sku}" />
