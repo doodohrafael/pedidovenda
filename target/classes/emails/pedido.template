@@ -109,9 +109,11 @@
     background-color: #2196F3;
     border: white 1px solid;
     height: 50px;
+    color: white; 
+    text-align: center; 
+    font-weight: 700;
+    text-decoration: none;
   }
-
-	
 
 </style>
 
@@ -177,7 +179,8 @@
     </div>
 
     <footer id="footer">
-
+        <p>&nbsp; Precisa de ajuda? Entre em contato com o nosso time 
+            <a href="https://linktr.ee/douglasrafaelprogramador?utm_source=linktree_admin_share" target="_blank" style="text-decoration: none; color: black;">clicando aqui. </a> </p>
     </footer>
 
 </body>

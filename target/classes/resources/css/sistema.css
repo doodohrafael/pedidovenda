@@ -18,7 +18,7 @@ body {
 
 .background-image-relatorio {
 	position: absolute;
-	width: 41% !important;
+	width: 55% !important;
 	margin-top: 30px;
 }
 
@@ -88,13 +88,12 @@ a:hover {
 	width: 100% !important;
 	display: block;
 	margin: auto;
-	/*border: green solid 1px;*/
 	margin-top: 260px;
 	margin-bottom: 5px;
 }
 
 .icon-online {
-	width: 10px !important;
+	width: 11px !important;
 }
 
 .grid-login {
@@ -274,6 +273,12 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 .btn-sms {
 	background-color: darkorange !important;
 	border-color: darkorange !important;
+	color: white !important;
+}
+
+.btn-whatsapp {
+	background-color: darkgreen !important;
+	border-color: darkgreen !important;
 	color: white !important;
 }
 

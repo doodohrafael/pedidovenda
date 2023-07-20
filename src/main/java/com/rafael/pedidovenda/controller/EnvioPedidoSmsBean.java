@@ -12,11 +12,11 @@ import com.rafael.pedidovenda.model.Pedido;
 import com.rafael.pedidovenda.service.EnvioPedidoService;
 import com.telesign.MessagingClient;
 import static java.lang.String.format; 
+import static com.rafael.pedidovenda.util.Formatador.formatarTelefoneCliente;
 
 @Named
 @RequestScoped
 public class EnvioPedidoSmsBean implements Serializable {
-
 
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +31,6 @@ public class EnvioPedidoSmsBean implements Serializable {
 	private static final String API_KEY = 
 			"+diu/tO35e6lZIExMTGI7VxSqmq1hui6MgHJPmkrsMnWKkY4vssbrJ8ODUw82UEI0epURNVTUSDra77hxnmdAw==";
 	
-	private static final String PREFIXO_PAIS = "55";
 	private static final String MENSAGEM_SMS = "Opa, '%s'. Seu pedido #'%s' na Reboot foi feito com sucesso! "
 			+ "Acesse seu e-mail para mais informações.";
 	
@@ -61,15 +60,6 @@ public class EnvioPedidoSmsBean implements Serializable {
 		} finally {
 			pedido.adicionarItemVazio();
 		}
-	}
-	
-	public String formatarTelefoneCliente(String telefoneSemMascara) {
-		telefoneSemMascara = pedido.getCliente().getTelefone()
-				.replace("(", "")
-				.replace(")", "")
-				.replace(" ", "")
-				.replace("-", "");
-		return PREFIXO_PAIS + telefoneSemMascara;
 	}
 	
 }

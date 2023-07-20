@@ -31,6 +31,10 @@
 			<p:commandButton value="Enviar por SMS" action="#{envioPedidoSmsBean.enviarPedido}" 
 				icon="pi pi-send" styleClass="btn-sms" process="@this" 
 				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorSms}" />
+				
+			<p:commandButton value="Enviar por Whatsapp" action="#{envioPedidoWhatsappBean.enviarPedido}" 
+				icon="pi pi-whatsapp" styleClass="btn-whatsapp" process="@this" 
+				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorWhatsapp}" />
 
 			<p:divider layout="vertical" />
 

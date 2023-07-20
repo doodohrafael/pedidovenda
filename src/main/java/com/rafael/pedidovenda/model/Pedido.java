@@ -243,6 +243,11 @@ public class Pedido implements Serializable {
 		return isNovo() || isCancelado();
 	}
 	
+	@Transient
+	public boolean isNaoEnviavelPorWhatsapp() {
+		return isNovo() || isCancelado();
+	}
+	
 	public List<ItemPedido> getItens() {
 		return itens;
 	}
