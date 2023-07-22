@@ -1,5 +1,8 @@
 package com.rafael.pedidovenda.service;
 
+import static com.rafael.pedidovenda.model.TipoPessoa.FISICA;
+import static com.rafael.pedidovenda.model.TipoPessoa.JURIDICA;
+
 import java.io.Serializable;
 
 import javax.inject.Inject;
@@ -7,6 +10,11 @@ import javax.inject.Inject;
 import com.rafael.pedidovenda.model.Cliente;
 import com.rafael.pedidovenda.repository.Clientes;
 import com.rafael.pedidovenda.util.jpa.Transactional;
+
+import static com.rafael.pedidovenda.util.validation.ValidadorCNPJ.isCNPJ;
+import static com.rafael.pedidovenda.util.validation.ValidadorCPF.isCPF;
+import static com.rafael.pedidovenda.util.Formatador.formatarCpf;
+import static com.rafael.pedidovenda.util.Formatador.formatarCnpj;
 
 public class CadastroClienteService implements Serializable {
 
@@ -23,6 +31,7 @@ public class CadastroClienteService implements Serializable {
 		verificarPorNome(cliente);
 
 		verificarPorDocumentoReceitaFederal(cliente);
+		validarCpfECnpj(cliente);
 
 		verificarPorTelefone(cliente);
 
@@ -58,6 +67,7 @@ public class CadastroClienteService implements Serializable {
 					"Já existe um cliente com o documento " + cliente.getDocumentoReceitaFederal() 
 					+ " informado.");
 		}
+		
 	}
 	
 	private void verificarPorTelefone(Cliente cliente) {
@@ -69,4 +79,16 @@ public class CadastroClienteService implements Serializable {
 		}
 	}
 	
+	private void validarCpfECnpj(Cliente cliente) {
+		if (cliente.getTipo().equals(FISICA) && !isCPF(formatarCpf(cliente.getDocumentoReceitaFederal()))) {
+			throw new NegocioException("O CPF informado é inválido!");
+		}
+		
+		if (cliente.getTipo().equals(JURIDICA) && !isCNPJ(formatarCnpj(cliente.getDocumentoReceitaFederal()))) {
+			throw new NegocioException("O CNPJ informado é inválido!");
+		}
+	}
+	
+		
+		
 }

@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.rafael.pedidovenda.service.NegocioException;
-import com.rafael.pedidovenda.validation.SKU;
+import com.rafael.pedidovenda.util.validation.SKU;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

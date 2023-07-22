@@ -39,4 +39,15 @@ public class Formatador {
 		return formatador.format(valor);
 	}
 	
+	public static String formatarCpf(String cpf) {
+		return cpf.replace(".", "")
+				  .replace("-", "");
+	}
+	
+	public static String formatarCnpj(String cnpj) {
+		return cnpj.replace(".", "")
+				   .replace("/", "")
+				   .replace("-", "");
+	}
+	
 }

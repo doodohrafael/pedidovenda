@@ -1,4 +1,4 @@
-package com.rafael.pedidovenda.validation;
+package com.rafael.pedidovenda.util.validation;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

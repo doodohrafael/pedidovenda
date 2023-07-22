@@ -103,8 +103,8 @@ public class Clientes implements Serializable {
 			
 			return cliente;
 		} catch (NoResultException e) {
+			return null;
 		}
-		return cliente;
 	}
 
 	public List<Cliente> filtrados(ClienteFilter filtro) {
@@ -127,7 +127,7 @@ public class Clientes implements Serializable {
 		criteriaQuery.select(clienteRoot);
 		criteriaQuery.where(predicates.toArray(new Predicate[0]));
 		
-		List<Order> orderList = new ArrayList<Order>(); 
+		List<Order> orderList = new ArrayList<>(); 
 		orderList.add(builder.asc(clienteRoot.get("nome")));
 		criteriaQuery.orderBy(orderList);
 		

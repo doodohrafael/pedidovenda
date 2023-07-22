@@ -2,7 +2,7 @@ package com.rafael.pedidovenda.repository.filter;
 
 import java.io.Serializable;
 
-import com.rafael.pedidovenda.validation.SKU;
+import com.rafael.pedidovenda.util.validation.SKU;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -37,7 +37,7 @@ public class Cliente implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String nome;
 	
-	@Email
+	@Email(message = "E-mail inválido")
 	@NotBlank
 	@Column(nullable = false, length = 255)
 	private String email;

@@ -27,7 +27,7 @@ import com.rafael.pedidovenda.repository.Produtos;
 import com.rafael.pedidovenda.repository.Usuarios;
 import com.rafael.pedidovenda.service.CadastroPedidoService;
 import com.rafael.pedidovenda.service.ViaCepService;
-import com.rafael.pedidovenda.validation.SKU;
+import com.rafael.pedidovenda.util.validation.SKU;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -181,7 +181,6 @@ public class CadastroPedidoBean implements Serializable {
 		String cepSemTraco = cep.replace("-", "");
 		EnderecoViaCep endereco = viaCepService.buscarEnderecoPorCep(cepSemTraco);
 		
-		// tenho que disabilitar os campos e habitar quando um cep for encontrado.
 		pedido.getEnderecoEntrega().setCep(endereco.getCep());
 		pedido.getEnderecoEntrega().setLogradouro(endereco.getLogradouro());
 		pedido.getEnderecoEntrega().setUf(endereco.getUf());
