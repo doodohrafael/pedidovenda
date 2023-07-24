@@ -142,7 +142,12 @@
             <label class="p-detalhes-entrega">Nome do cliente: </label> <label class="dt-detalhes-entrega">$pedido.cliente.nome</label> <br>
             <label class="p-detalhes-entrega">Status do pedido: </label> <label class="dt-detalhes-entrega">$pedido.status.descricao</label> <br>
             <label class="p-detalhes-entrega">Data e hora do pedido: </label> <label class="dt-detalhes-entrega">$dataCriacaoFormatada</label> <br>
-            <label class="p-detalhes-entrega">E-mail do cliente: </label> <label class="dt-detalhes-entrega">$pedido.cliente.email</label>
+            <label class="p-detalhes-entrega">E-mail do cliente: </label> <label class="dt-detalhes-entrega">$pedido.cliente.email</label> <br>
+            <label class="p-itens-pedido">Forma de pagamento: </label> <label class="dt-itens-pedido">$pedido.formaPagamento.descricao</label> <br>
+            <label class="p-itens-pedido">Valor do desconto: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorDesconto)</label> <br>
+            <label class="p-itens-pedido">Valor do frete: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorFrete)</label> <br>
+            <label class="p-itens-pedido">Valor total: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorTotal)</label> <br>
+            <label class="p-itens-pedido">Data de entrega: </label> <label class="dt-itens-pedido">$dataEntregaFormatada</label> 
             
             <h3 id="h3-corpo-email">&nbsp;Itens do pedido</h3>
 
@@ -170,11 +175,6 @@
                 </table>
                 <br>
 
-                <label class="p-itens-pedido">Valor do desconto: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorDesconto)</label> <br>
-            	<label class="p-itens-pedido">Valor do frete: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorFrete)</label> <br>
-                <label class="p-itens-pedido">Valor total: </label> <label class="dt-itens-pedido">$numberTool.currency($pedido.valorTotal)</label> <br>
-                <label class="p-itens-pedido">Forma de pagamento: </label> <label class="dt-itens-pedido">$pedido.formaPagamento.descricao</label> <br>
-                <label class="p-itens-pedido">Data de entrega: </label> <label class="dt-itens-pedido">$dataEntregaFormatada</label>
         </div>
     </div>
 

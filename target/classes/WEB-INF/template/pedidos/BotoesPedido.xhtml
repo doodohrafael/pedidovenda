@@ -14,7 +14,7 @@
 				styleClass="btn-salvar" />
 		</p:toolbarGroup>
 
-		<p:toolbarGroup align="right" styleClass="">
+		<p:toolbarGroup align="right" styleClass="tb-botoes">
 			<p:commandButton value="Emitir" action="#{emissaoPedidoBean.emitirPedido}"
 				styleClass="btn-emitir" process="@form"	update="@form" icon="pi pi-check-circle" 
 				disabled="#{cadastroPedidoBean.pedido.naoEmissivel or not seguranca.emitirPedidoPermitido}" />
@@ -29,7 +29,7 @@
 				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorEmail}" />
 				
 			<p:commandButton value="Enviar por SMS" action="#{envioPedidoSmsBean.enviarPedido}" 
-				icon="pi pi-send" styleClass="btn-sms" process="@this" 
+				icon="pi pi-send" styleClass="btn-sms" process="@this"
 				disabled="#{cadastroPedidoBean.pedido.naoEnviavelPorSms}" />
 				
 			<p:commandButton value="Enviar por Whatsapp" action="#{envioPedidoWhatsappBean.enviarPedido}" 
