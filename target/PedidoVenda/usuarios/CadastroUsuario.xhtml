@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">#{cadastroUsuarioBean.editando ? 'Edição de usuário' : 'Novo usuário'}</ui:define>
+
+	<ui:define name="corpo">
+		<f:metadata>
+			<o:viewParam name="usuario" value="#{cadastroUsuarioBean.usuario}" />
+			<f:viewAction action="#{cadastroUsuarioBean.inicializar}" />
+		</f:metadata>
+	
+		<h:form>
+			<h1 class="titulo-h1">#{cadastroUsuarioBean.editando ? 'Edição de usuário' : 'Novo usuário'}</h1>
+			
+			<p:messages closable="true">
+				<p:autoUpdate/>
+			</p:messages>
+			
+			<p:toolbar styleClass="toolbar">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/usuarios/CadastroUsuario" styleClass="btn-novo" />
+					<p:commandButton value="Salvar" styleClass="btn-salvar" icon="pi pi-save" iconPos="right" 
+						action="#{cadastroUsuarioBean.salvar}" update="@form" 
+						validateClient="false" />
+				</p:toolbarGroup>
+				
+				<p:toolbarGroup align="right">
+					<p:button value="Pesquisar" styleClass="btn-pesquisa" icon="pi pi-search"
+						outcome="/usuarios/PesquisaUsuarios" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:panelGrid columns="2" columnClasses="rotulo, campo" styleClass="pg">
+			
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="80" maxlength="80" 
+					value="#{cadastroUsuarioBean.usuario.nome}" />
+				
+				<p:outputLabel value="Email" for="email" />
+				<p:inputText id="email" size="120" maxlength="255"
+					value="#{cadastroUsuarioBean.usuario.email}" />
+				
+				<p:outputLabel value="Senha" for="senha" />
+				<p:password id="senha" size="16" maxlength="20" 
+					value="#{cadastroUsuarioBean.usuario.senha}" />
+					
+				<p:outputLabel value="Grupos" for="grupos" />
+				<p:selectManyCheckbox id="grupos" value="#{cadastroUsuarioBean.usuario.grupos}" required="true">
+					<f:attribute name="collectionType" value="java.util.ArrayList"/>
+					<f:selectItems value="#{cadastroUsuarioBean.grupos}" var="grupo"
+						itemValue="#{grupo}" itemLabel="#{grupo.nome}" />
+					<f:converter converterId="grupoConverter" />
+				</p:selectManyCheckbox>
+				
+			</p:panelGrid>
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>

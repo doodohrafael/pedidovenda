@@ -53,27 +53,27 @@
 				styleClass="tabela" emptyMessage="Nenhum pedido encontrado." id="clientesTable"
 				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 			
-				<p:column headerText="Nome" style="width: 60% !important;">
+				<p:column headerText="Nome" styleClass="cl-nome-cliente">
 					<p:outputLabel value="#{cliente.nome}" />
 				</p:column>
 				
-				<p:column headerText="Email" style="width: 20% !important;">
+				<p:column headerText="Email" styleClass="cl-email-cliente">
 					<p:outputLabel value="#{cliente.email}" />
 				</p:column>
 				
-				<p:column headerText="Telefone" style="width: 9% !important;">
+				<p:column headerText="Telefone" styleClass="cl-telefone-cliente">
 					<p:outputLabel value="#{cliente.telefone}" />
 				</p:column>
 				
-				<p:column headerText="Pessoa" style="width: 3% !important;">
+				<p:column headerText="Pessoa" styleClass="cl-pessoa-cliente">
 					<p:outputLabel value="#{cliente.tipo.descricao}" />
 				</p:column>
 				
-				<p:column headerText="Doc Receita Federal" style="width: 11% !important; text-align: right !important;">
+				<p:column headerText="Doc Receita Federal" styleClass="cl-doc-cliente">
 					<p:outputLabel value="#{cliente.documentoReceitaFederal}" />
 				</p:column>
 				
-				<p:column styleClass="editar-excluir" style="text-align: right !important;">
+				<p:column styleClass="editar-excluir cl-acoes-cliente">
 					<p:button title="Editar" styleClass="btn-editar" icon="pi pi-pencil" 
 						outcome="/clientes/CadastroCliente">
 						<f:param name="cliente" value="#{cliente.id}" />

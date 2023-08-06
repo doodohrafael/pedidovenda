@@ -24,7 +24,7 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid styleClass="painel" columns="2" columnClasses="rotulo, campo">
+			<p:panelGrid styleClass="pg" columns="2" columnClasses="rotulo, campo">
 				
 				<p:outputLabel value="Número" />
 				<h:panelGroup>
@@ -58,38 +58,38 @@
 				var="pedido" styleClass="tabela" emptyMessage="Nenhum pedido encontrado."
 				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 
-				<p:column headerText="Número" style="text-align: center; width: 100px;">
+				<p:column headerText="Número" styleClass="cl-numero-pedido">
 					<h:outputLabel value="#{pedido.id}" />
 				</p:column>
 
-				<p:column headerText="Cliente">
+				<p:column headerText="Cliente" styleClass="cl-cliente-pedido">
 					<h:outputLabel value="#{pedido.cliente.nome}" />
 				</p:column>
 
-				<p:column headerText="Vendedor">
+				<p:column headerText="Vendedor" styleClass="cl-vendedor-pedido">
 					<h:outputLabel value="#{pedido.vendedor.nome}" />
 				</p:column>
 
-				<p:column headerText="Data de criação" style="text-align: center; width: 190px;">
+				<p:column headerText="Data de criação" styleClass="cl-dt-criacao-pedido">
 					<h:outputLabel value="#{pedido.dataCriacao}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputLabel>
 				</p:column>
 
-				<p:column headerText="Valor total" style="text-align: right; width: 120px;">
+				<p:column headerText="Valor total" styleClass="cl-vlr-total-pedido">
 					<h:outputLabel value="#{pedido.valorTotal}">
 						<f:convertNumber type="currency" />
 					</h:outputLabel>
 				</p:column>
 				
-				<p:column headerText="Status" style="width: 100px;">
+				<p:column headerText="Status" styleClass="cl-status-pedido">
 					<h:outputLabel value="#{pedido.status.descricao}" 
 						styleClass="#{pedido.cancelado ? 'txt-cancelar' : ''}
 								#{pedido.emitido ? 'txt-emitido' : ''}
 								#{pedido.orcamento ? 'txt-orcamento' : ''}" />
 				</p:column>
 
-				<p:column style="text-align: center; width: 50px;">
+				<p:column styleClass="cl-acoes-pedido">
 					<p:button icon="#{pedido.orcamento ? 'pi pi-pencil' : 'pi pi-eye'}" 
 						title="#{pedido.orcamento ? 'Editar' : 'Ver'}" 
 						outcome="/pedidos/CadastroPedido" 

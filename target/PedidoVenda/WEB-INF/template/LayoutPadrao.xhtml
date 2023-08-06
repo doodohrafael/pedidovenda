@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Sistema de Pedidos de Vendas</ui:insert></title>
+	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
+	<h:outputScript library="js" name="sistema.js" />
+
+	<h:outputScript name="preconnect" href="https://fonts.googleapis.com" />
+		<h:outputScript name="preconnect" href="https://fonts.gstatic.com" />
+			<h:outputStylesheet
+				href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display;=swap"
+				name="stylesheet" />
+</h:head>
+
+<h:body>
+	<p:ajaxStatus styleClass="loading-ajax-status" onsuccess="configurarMoeda()">
+		<f:facet name="start">
+			<p:graphicImage styleClass="loading" 
+				library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<p:outputLabel value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+		<div style="float: left;">
+			<h:link outcome="/Home">
+				<h:graphicImage id="tam-logo-header" library="images" name="logo-reboot.png" />
+			</h:link>
+		</div>
+		
+		<div style=" float: right; margin-right: 110px;">
+			<span class="span-nome-usuario">
+				Olá #{seguranca.nomeUsuario}!
+				<h:graphicImage id="online" library="images" name="icon-online.png" styleClass="icon-online">
+					<p:tooltip for="online" value="Você está logado" />
+				</h:graphicImage>
+			</span>
+		
+			<h:form style="display: inline-block;">
+				<p:menubar styleClass="menu-sistema">
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Clientes" outcome="/clientes/PesquisaClientes" />
+						<p:menuitem value="Usuários" outcome="/usuarios/PesquisaUsuarios" />
+						<p:separator />
+						<p:menuitem value="Categorias" />
+						<p:menuitem value="Produtos" outcome="/produtos/PesquisaProdutos" />
+					</p:submenu>
+					<p:submenu label="Pedidos">
+						<p:menuitem value="Novo pedido" outcome="/pedidos/CadastroPedido" />
+						<p:menuitem value="Pesquisa" outcome="/pedidos/PesquisaPedidos" />
+					</p:submenu>
+					<p:submenu label="Relatórios">
+						<p:menuitem value="Pedidos Emitidos" outcome="/relatorios/RelatorioPedidosEmitidos" />
+					</p:submenu>
+				
+					<p:menuitem value="Sair" icon="pi pi-power-off" url="/PedidoVenda/j_spring_security_logout" />
+				</p:menubar>
+			</h:form>
+		</div>
+	</header>
+
+	<div id="conteudo">
+		<ui:insert name="corpo"></ui:insert>
+	</div>
+	
+	<p:separator style="margin-top: 20px;" />
+	
+	<footer style="text-align: right !important">
+		Sistema Comercial de Pedido e Venda feito por 
+		<a href="https://linktr.ee/douglasrafaelprogramador?utm_source=linktree_admin_share" target="_blank" class="a-douglas-rafael-layout">Douglas Rafael</a>
+	</footer>
+	
+	<script>
+		function configurarMoeda() {
+			$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+		}
+		
+		$(document).ready(function() {
+			configurarMoeda();
+		})
+	</script>
+	
+	
+</h:body>
+
+</html>
+
+
+
+
+
+
+
+

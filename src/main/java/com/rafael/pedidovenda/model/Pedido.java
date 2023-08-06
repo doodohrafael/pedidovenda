@@ -23,6 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -35,6 +36,7 @@ import lombok.Getter;
 
 @Data
 @Entity
+@Table(name = "pedido")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Pedido implements Serializable {
 

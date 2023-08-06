@@ -17,7 +17,7 @@
 				<p:autoUpdate />
 			</p:messages>
 			
-			<p:toolbar style="margin-top: 20px;">
+			<p:toolbar styleClass="toolbar">
 				<p:toolbarGroup>
 					<p:commandButton styleClass="btn-pesquisa" value="Pesquisar" 
 						action="#{pesquisaProdutosBean.pesquisar}" update="@form"
@@ -29,7 +29,7 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px;"
+			<p:panelGrid columns="2" styleClass="pg"
 				columnClasses="rotulo, campo">
 				<p:outputLabel value="SKU" for="sku" />
 				<p:inputText id="sku" size="20" value="#{pesquisaProdutosBean.filtro.sku}" 
@@ -44,35 +44,33 @@
 				var="produto" styleClass="tabela" emptyMessage="Nenhum produto encontrado." 
 				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 				
-				<p:column headerText="Foto do produto" style="width: 20% !important; text-align: center !important;">
-					<h:graphicImage library="produtos" name="#{produto.nomeImagem}.png" style="width: 250px !important;" />
+				<p:column headerText="Foto do produto" styleClass="cl-foto-produto">
+					<h:graphicImage library="produtos" name="#{produto.nomeImagem}.png" styleClass="cl-tam-img-produto" />
 				</p:column>
 
-				<p:column headerText="SKU" style="text-align: center; width: 100px;">
+				<p:column headerText="SKU" styleClass="cl-sku-produto">
 					<h:outputLabel value="#{produto.sku}" />
 				</p:column>
 
-				<p:column headerText="Nome">
+				<p:column headerText="Nome" styleClass="cl-nome-produto">
 					<h:outputLabel value="#{produto.nome}" />
 				</p:column>
 
-				<p:column headerText="Categoria" style="width: 250px;">
+				<p:column headerText="Categoria" styleClass="cl-categoria-produto">
 					<h:outputLabel value="#{produto.categoria.categoriaPai.descricao} - #{produto.categoria.descricao}" />
 				</p:column>
 
-				<p:column headerText="Valor unitário"
-					style="text-align: right; width: 120px;">
+				<p:column headerText="Valor unitário" styleClass="cl-vlr-uni-produto">
 					<h:outputLabel value="#{produto.valorUnitario}">
 						<f:convertNumber type="currency" />
 					</h:outputLabel>
 				</p:column>
 
-				<p:column headerText="Estoque"
-					style="text-align: center; width: 100px;">
+				<p:column headerText="Estoque" styleClass="cl-estoque-produto">
 					<h:outputLabel value="#{produto.quantidadeEstoque}" />
 				</p:column>
 
-				<p:column style="text-align: center; width: 100px;">
+				<p:column styleClass="cl-acoes-produto">
 				
 					<p:button icon="pi pi-pencil" title="Editar" 
 						outcome="/produtos/CadastroProduto" 

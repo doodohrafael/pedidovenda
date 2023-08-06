@@ -1,0 +1,36 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="titulo">Relatório de pedidos emitidos</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h1 class="titulo-h1">Relatório de Pedidos Emitidos</h1>
+			<p:messages closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			
+			<p:toolbar style="margin-top: 20px;">
+				<p:toolbarGroup>
+					<p:commandButton value="Emitir" icon="pi pi-file-pdf" iconPos="right" 
+						action="#{relatorioPedidosEmitidosBean.emitir}" ajax="false" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:panelGrid columns="3" styleClass="painel" columnClasses="rotulo-cliente, campo">
+				<p:outputLabel value="Data de criação" /> 
+				<h:panelGroup>
+					De <p:calendar size="7" label="Data inicial" value="#{relatorioPedidosEmitidosBean.dataInicio}" 
+						pattern="dd/MM/yyyy" /> a
+					<p:calendar size="7" label="Data final" value="#{relatorioPedidosEmitidosBean.dataFim}" 
+						pattern="dd/MM/yyyy" />
+				</h:panelGroup>
+			</p:panelGrid>
+			
+		</h:form>
+		<h:graphicImage library="images" name="undraw_date_picker_re_r0p8.svg" styleClass="background-image-relatorio" />
+	</ui:define>
+</ui:composition>

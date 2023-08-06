@@ -145,11 +145,6 @@ h1 {
 	margin: 0px;
 }
 
-.painel {
-	width: 100% !important;
-	margin-top: 20px !important;
-}
-
 #botao-novo {
 	margin-right: 10px;
 }
@@ -338,11 +333,15 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 }
 
 .toolbar {
-	margin-top: 20px;
+	margin-top: 20px !important;
 }
 
 .pg {
 	width: 100% !important;
+	margin-top: 20px !important;
+}
+
+.tabView {
 	margin-top: 20px !important;
 }
 
@@ -391,6 +390,141 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
 body .ui-toolbar {
 	background-color: #1f2d40 !important;
 }
+
+body .ui-datatable .ui-datatable-data > tr > td {
+	background-color: #1f2d40 !important;
+	color: white !important;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+	background-color: #1f2d40 !important;
+	color: white !important;
+}
+
+/* colunas pesquisa de clientes */
+.cl-nome-cliente {
+	width: 40% !important;
+}
+
+.cl-email-cliente {
+	width: 29% !important;
+}
+
+.cl-telefone-cliente {
+	width: 15% !important;
+}
+
+.cl-pessoa-cliente {
+	width: 7% !important;
+}
+
+.cl-doc-cliente {
+	width: 19% !important; 
+	text-align: right !important;
+}
+
+.cl-acoes-cliente {
+	text-align: right !important; 
+	width: 10% !important;
+}
+
+/* colunas pesquisa de produtos */
+.cl-foto-produto {
+	width: 20% !important; 
+	text-align: center !important;
+}
+
+.cl-tam-img-produto {
+	width: 250px !important;
+}
+
+.cl-sku-produto {
+	text-align: center !important; 
+	width: 10% !important;
+}
+
+.cl-nome-produto {
+	width: 20% !important;
+}
+
+.cl-categoria-produto {
+	width: 20% !important;
+}
+
+.cl-vlr-uni-produto {
+	text-align: right !important; 
+	width: 9% !important;
+}
+
+.cl-estoque-produto {
+	text-align: center !important; 
+	width: 8% !important;
+}
+
+.cl-acoes-produto {
+	text-align: center !important; 
+	width: 10% !important;
+}
+
+
+/* colunas pesquisa de pedidos */
+.cl-numero-pedido {
+	text-align: center !important; 
+	width: 8% !important;
+}
+
+.cl-cliente-pedido {
+	width: 25% !important;
+}
+
+.cl-vendedor-pedido {
+	width: 25% !important;
+}
+
+.cl-dt-criacao-pedido {
+	text-align: center !important;
+	width: 11% !important;
+}
+
+.cl-vlr-total-pedido {
+	text-align: right !important;
+	width: 8% !important;
+}
+
+.cl-status-pedido {
+	width: 7% !important;
+}
+
+.cl-acoes-pedido {
+	text-align: center !important;
+	width: 5% !important;
+}
+
+
+/* colunas pesquisa de usuarios */
+
+.cl-nome-pedido {
+	width: 60% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

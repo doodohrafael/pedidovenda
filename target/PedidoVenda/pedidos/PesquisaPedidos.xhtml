@@ -1,0 +1,106 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Pesquisa de Pedidos</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h1 class="titulo-h1">Pesquisar Pedidos</h1>
+			<p:messages>
+				<p:autoUpdate />
+			</p:messages>
+			<p:toolbar style="margin-top: 20px;">
+				<p:toolbarGroup>
+					<p:commandButton value="Pesquisar" action="#{pesquisaPedidosBean.pesquisar}" 
+						update="@form" styleClass="btn-pesquisa" icon="pi pi-search"  />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button styleClass="btn-novo" value="Novo" 
+						outcome="/pedidos/CadastroPedido" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid styleClass="painel" columns="2" columnClasses="rotulo, campo">
+				
+				<p:outputLabel value="Número" />
+				<h:panelGroup>
+					<p:inputText size="7" value="#{pesquisaPedidosBean.filtro.numeroDe}" maxlength="10" />
+					a
+					<p:inputText size="7" value="#{pesquisaPedidosBean.filtro.numeroAte}" maxlength="10" />
+				</h:panelGroup>
+
+				<p:outputLabel value="Data de criação" />
+				<h:panelGroup>
+					<p:calendar size="7" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoDe}" />
+					a
+					<p:calendar size="7" pattern="dd/MM/yyyy" value="#{pesquisaPedidosBean.filtro.dataCriacaoAte}" />
+				</h:panelGroup>
+				
+				<p:outputLabel value="Vendedor" />
+				<p:inputText size="80" value="#{pesquisaPedidosBean.filtro.nomeVendedor}" maxlength="80" />
+				
+				<p:outputLabel value="Cliente" />
+				<p:inputText size="100" value="#{pesquisaPedidosBean.filtro.nomeCliente}" maxlength="100" />
+				
+				<p:outputLabel value="Status" />
+				<p:selectManyCheckbox value="#{pesquisaPedidosBean.filtro.statuses}">
+					<f:selectItems value="#{pesquisaPedidosBean.statuses}" var="status" 
+						itemValue="#{status}" itemLabel="#{status.descricao}" />
+				</p:selectManyCheckbox>
+				
+			</p:panelGrid>
+
+			<p:dataTable id="pedidosTable" value="#{pesquisaPedidosBean.pedidosFiltrados}" 
+				var="pedido" styleClass="tabela" emptyMessage="Nenhum pedido encontrado."
+				rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+
+				<p:column headerText="Número" style="text-align: center; width: 100px;">
+					<h:outputLabel value="#{pedido.id}" />
+				</p:column>
+
+				<p:column headerText="Cliente">
+					<h:outputLabel value="#{pedido.cliente.nome}" />
+				</p:column>
+
+				<p:column headerText="Vendedor">
+					<h:outputLabel value="#{pedido.vendedor.nome}" />
+				</p:column>
+
+				<p:column headerText="Data de criação" style="text-align: center; width: 190px;">
+					<h:outputLabel value="#{pedido.dataCriacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputLabel>
+				</p:column>
+
+				<p:column headerText="Valor total" style="text-align: right; width: 120px;">
+					<h:outputLabel value="#{pedido.valorTotal}">
+						<f:convertNumber type="currency" />
+					</h:outputLabel>
+				</p:column>
+				
+				<p:column headerText="Status" style="width: 100px;">
+					<h:outputLabel value="#{pedido.status.descricao}" 
+						styleClass="#{pedido.cancelado ? 'txt-cancelar' : ''}
+								#{pedido.emitido ? 'txt-emitido' : ''}
+								#{pedido.orcamento ? 'txt-orcamento' : ''}" />
+				</p:column>
+
+				<p:column style="text-align: center; width: 50px;">
+					<p:button icon="#{pedido.orcamento ? 'pi pi-pencil' : 'pi pi-eye'}" 
+						title="#{pedido.orcamento ? 'Editar' : 'Ver'}" 
+						outcome="/pedidos/CadastroPedido" 
+						styleClass="#{pedido.cancelado ? 'btn-cancelar' : 'btn-editar-dt'}
+									#{pedido.orcamento ? 'btn-orcamento' : ''}" >
+						<f:param name="pedido" value="#{pedido.id}" />
+					</p:button>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

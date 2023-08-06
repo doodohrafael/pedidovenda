@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import static org.hibernate.annotations.LazyCollectionOption.FALSE;
@@ -22,6 +23,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
+@Table(name = "categoria")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Categoria implements Serializable {
 

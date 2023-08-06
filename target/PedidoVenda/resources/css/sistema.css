@@ -1,0 +1,405 @@
+@charset "utf-8";
+
+body {
+	font-size: 12px;
+	font-family: 'Victor Mono', monospace;
+	margin: 0px;
+	font-weight: normal;
+}
+
+.body-login {
+	background-color: indigo !important;
+}
+
+.background-image-home {
+	position: absolute;
+	width: 24% !important;
+}
+
+.background-image-relatorio {
+	position: absolute;
+	width: 55% !important;
+	margin-top: 30px;
+}
+
+header {
+	padding: 5px 0px;
+	margin-bottom: 20px;
+	height: 40px;
+	background-color: #1f2d40;
+	color: #fff;
+	box-shadow: 0px 2px 2px #1f2d40;
+}
+
+#tam-logo-header {
+	width: 100px;
+}
+
+header>div {
+	margin-left: 8px;
+}
+
+footer {
+	padding: 0px 8px;
+	margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: tomato;
+}
+
+.a-douglas-rafael-login:hover {
+	zoom: 1.3 !important;
+}
+
+.a-douglas-rafael-layout {
+	color: tomato !important;
+}
+
+.a-douglas-rafael-layout:hover {
+	zoom: 1.3 !important;
+}
+
+#conteudo {
+	padding: 0px 8px;
+}
+
+#login {
+	width: 27% !important;
+	margin: auto !important;
+	margin-top: 100px !important;
+}
+
+.titulo-login {
+	font-weight: 600 !important;
+	text-align: center !important;
+	color: tomato !important;
+	margin-bottom: 5px;
+	letter-spacing: 10px;
+}
+
+
+.logo-reboot-login {
+	width: 100% !important;
+	display: block;
+	margin: auto;
+	margin-top: 260px;
+	margin-bottom: 5px;
+}
+
+.icon-online {
+	width: 11px !important;
+}
+
+.grid-login {
+	border-radius: 12px; 
+	/*background-color: #2196F3 !important;*/
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: right;
+	margin: auto !important;
+	width: 60% !important;
+	color: white !important;
+	box-shadow: 3px 3px 5px black !important;
+}
+
+.label-email {
+	font-weight: bolder !important;
+	display: flex !important; 
+	width: 50px !important;
+}
+
+.label-senha {
+	font-weight: bolder !important; 
+	display: flex !important; 
+	width: 50px !important;
+}
+
+.inputs-login {
+	color: black !important;
+	background: white !important;
+}
+
+.btn-entrar {
+	background-color: tomato !important;
+	color: white !important;
+}
+
+.btn-entrar:hover {
+	background-color: white !important;
+	color: black !important;
+	border: black 1px solid;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	padding: 0px;
+	margin: 0px;
+}
+
+.painel {
+	width: 100% !important;
+	margin-top: 20px !important;
+}
+
+#botao-novo {
+	margin-right: 10px;
+}
+
+.rotulo {
+	width: 100px !important;
+}
+
+.rotulo-usuario {
+	width: 200px !important;
+}
+
+.rotulo-cliente {
+	width: 180px !important;
+}
+
+.rotulo-endereco {
+	width: 6% !important;
+}
+
+.rotulo-data-entrega {
+	width: 8% !important;
+}
+
+.rotulo-buscar-por-cep {
+	width: 10% !important;
+}
+
+.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+	text-align: center !important;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center !important;
+}
+
+.loading-ajax-status {
+	position: fixed;
+	top: 55px;
+	right: 10px;
+}
+
+.loading {
+	width: 40px;
+	position: fixed;
+	top: 55px;
+	right: 10px;
+}
+
+.loading-login {
+	width: 40px !important;
+	margin: auto !important;
+	display: block !important;
+	margin-top: 45px !important;
+}
+
+.ui-toolbar button {
+	margin-right: 10px;
+}
+
+.menu-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: 0px !important;
+}
+
+/* Cor texto menu hover */
+body .ui-menu .ui-menu-list .ui-menuitem.ui-menuitem-active>.ui-menuitem-link .ui-menuitem-text
+	{
+	/* color: #2196F3 !important; */
+	color: tomato !important;
+}
+
+/* Cor texto menu */
+body .ui-menu.ui-menubar>.ui-menu-list>.ui-menuitem>.ui-menuitem-link>span
+	{
+	color: #2196F3 !important;
+	font-weight: bold !important;
+}
+
+/* Posião dos menuitens */
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link {
+	padding: 0.35rem 2rem;
+}
+
+.btn-salvar {
+	background-color: tomato !important;
+	border-color: tomato !important;
+	color: white !important;
+}
+
+.btn-cancelar {
+	background-color: crimson !important;
+	border-color: crimson !important;
+	color: white !important;
+}
+
+.btn-novo {
+	background-color: dodgerblue !important;
+	border-color: dodgerblue !important;
+	color: white !important;
+}
+
+.btn-novo:hover {
+	background-color: rgb(59, 188, 231) !important;
+	border-color: rgb(59, 188, 231)  !important;
+}
+
+.btn-emitir {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+}
+
+.btn-email {
+	background-color: blueviolet !important;
+	border-color: blueviolet !important;
+	color: white !important;
+}
+
+.btn-sms {
+	background-color: darkorange !important;
+	border-color: darkorange !important;
+	color: white !important;
+}
+
+.btn-whatsapp {
+	background-color: darkgreen !important;
+	border-color: darkgreen !important;
+	color: white !important;
+}
+
+.btn-pesquisa {
+	background-color: gold !important;
+	border-color: gold !important;
+	color: black !important;
+}
+
+.btn-excluir {
+	background-color: crimson !important;
+	border-color: crimson !important;
+	color: white !important;
+}
+
+.btn-editar {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+	margin-right: 10px !important;
+}
+
+.btn-editar-dt {
+	background-color: limegreen !important;
+	border-color: limegreen !important;
+	color: white !important;
+}
+
+.btn-orcamento {
+	background-color: gold !important;
+	border-color: gold !important;
+	color: white !important;
+}
+
+.btn-nao {
+	background-color: dodgerblue !important;
+	border-color: dodgerblue !important;
+	color: white !important;
+}
+
+.txt-cancelar {
+	color: crimson !important;
+}
+
+.txt-emitido {
+	color: limegreen !important;
+}
+
+.txt-orcamento {
+	color: gold !important;
+}
+
+.titulo-h1 {
+	font-size: 35px !important;
+	font-weight: bold !important;
+	color: tomato !important;
+}
+
+.toolbar {
+	margin-top: 20px;
+}
+
+.pg {
+	width: 100% !important;
+	margin-top: 20px !important;
+}
+
+.tabela {
+	margin-top: 20px !important;
+	background-color: oldlace !important;
+	color: black !important;
+}
+
+.editar-excluir {
+	width: 200px !important; 
+	text-align: center !important;
+}
+
+.titulo-h2 {
+	font-size: 35px !important;
+	font-weight: bold !important;
+	color: tomato !important;
+}
+
+.data-entrega {
+	font-weight: bold !important; 
+	font-size: 2.1em !important;
+	margin-right: 30px !important;
+}
+
+.buscar-cep {
+	font-weight: bold !important; 
+	font-size: 2.1em !important;
+	margin-right: 30px !important;
+}
+
+.span-nome-usuario {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	margin-right: 60px;
+	font-size: 15px !important;
+}
+
+.icons-payments {
+	width: 50px !important;
+	padding: 0px !important;
+}
+
+body .ui-toolbar {
+	background-color: #1f2d40 !important;
+}
+
+body .ui-datatable .ui-datatable-data > tr > td {
+	background-color: #1f2d40 !important;
+	color: white !important;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+	background-color: #1f2d40 !important;
+	color: white !important;
+}
+
+

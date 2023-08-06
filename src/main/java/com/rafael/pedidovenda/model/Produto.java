@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -28,6 +29,7 @@ import lombok.Setter;
 
 @Data
 @Entity
+@Table(name = "produto")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Produto implements Serializable {
 

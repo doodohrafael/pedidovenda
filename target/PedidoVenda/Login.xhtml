@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Sistema Pedido e Venda - Login</title>
+	
+		<h:outputStylesheet library="css" name="sistema.css" />
+		<h:outputScript library="js" name="sistema.js" />
+		<h:outputScript name="preconnect" href="https://fonts.googleapis.com" />
+		<h:outputScript name="preconnect" href="https://fonts.gstatic.com" />
+			<h:outputStylesheet
+				href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display;=swap"
+				name="stylesheet" />
+	</h:head>
+	
+	<h:body styleClass="body-login">
+		<f:metadata>
+			<f:event listener="#{loginBean.preRender}" type="preRenderView" />
+		</f:metadata>
+		
+		<div id="login" class="logo-reboot-login">
+			<h:graphicImage library="images" name="logo-reboot.png" styleClass="logo-reboot-login" />
+			<h1 class="titulo-login">Soluções Inteligentes</h1>
+			
+			<h:form id="frm" prependId="false">
+			
+				<p:messages closable="true">
+					<p:autoUpdate />
+				</p:messages>
+				
+				<h:panelGrid columns="2" styleClass="grid-login">
+					<p:outputLabel value="E-mail" styleClass="label-email" />
+					<p:inputText size="30" id="j_username" value="#{loginBean.email}" styleClass="inputs-login" />
+							
+					<p:outputLabel value="Senha" styleClass="label-senha"  />
+					<p:password size="30" id="j_password" styleClass="inputs-login" />
+							
+					<h:panelGroup />
+					<p:commandButton value="Entrar" action="#{loginBean.login}" ajax="false" icon="pi pi-user" 
+						styleClass="btn-entrar" />
+						<p:outputLabel />
+				<p>Desenvolvido por <a href="https://linktr.ee/douglasrafaelprogramador?utm_source=linktree_admin_share" target="_blank"
+					class="a-douglas-rafael-login">Douglas Rafael</a></p>					
+				</h:panelGrid>
+				
+			</h:form>
+		</div>
+		<div id="nonAjaxLoad">
+		    <h:graphicImage library="images" name="loading.gif" styleClass="loading-login" />
+		</div>
+		
+	</h:body>
+
+</html>
+
+
+
+
+
+
+
+

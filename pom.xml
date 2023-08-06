@@ -31,7 +31,7 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 		<!-- Red Hat - Para Beans CDI -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId> 
@@ -156,14 +156,6 @@
 		    <version>3.1.4.RELEASE</version>
 		</dependency>
 		
-		<!-- API de Servlet -->
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
-		    <scope>provided</scope>
-		</dependency>
-		
 		<!-- Biblioteca para relatórios -->
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
@@ -191,7 +183,15 @@
 		    <artifactId>telesign</artifactId>
 		    <version>2.3.0</version>
 		</dependency>
-			
+		
+		<!-- API de Servlet -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>PedidoVenda</finalName>
